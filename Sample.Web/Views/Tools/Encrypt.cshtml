@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "MD5加密解密/Base64加密解密/文件转为MD5";
+    ViewBag.Keywords = "MD5加密解密 | Base64加密解密 | 文件转为MD5";
+    ViewBag.Description = "MD5加密解密、Base64加密解密、文件转为MD5";
+}
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#md5">Md5</a></li>
+    <li><a href="#base64">Base64</a></li>
+    <li><a href="#filemd5">文件Md5</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane" id="md5">
+        @Html.Partial("_Md5")
+    </div>
+    <div class="tab-pane" id="base64">
+        @Html.Partial("_Base64")
+    </div>
+    <div class="tab-pane" id="filemd5">
+        @Html.Partial("_FileMd5")
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>

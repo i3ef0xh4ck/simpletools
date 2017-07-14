@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "历史上的今天";
+    ViewBag.Keywords = "历史上的今天";
+    ViewBag.Description = "历史上的今天";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/query/local">本机IP</a></li>
+    <li><a href="/query/http">http模拟查询</a></li>
+    <li><a href="/query/ip">IP归属地查询</a></li>
+    <li><a href="/query/domain">域名归属地查询</a></li>
+    <li><a href="/query/phone">手机归属地查询</a></li>
+    <li class="active"><a href="/query/today">历史上的今天</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        @if (ViewBag.Today != null && ViewBag.Today.result != null) {
+            var list = (ViewBag.Today.result as List<Sample.BLL.result>).OrderByDescending(n => n.year);
+            var date = string.Format("{0:MM-dd}", DateTime.Now);
+            <table class="table table-bordered table-hover">
+                @foreach (Sample.BLL.result item in list) {
+                    <tr>
+                        <td style="width:120px;">@item.year-@date</td>
+                        <td>@item.title</td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>

@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "二维码生成,二维码解码,透明背景二维码";
+    ViewBag.Keywords = "二维码生成,二维码解码,透明背景二维码";
+    ViewBag.Description = "二维码生成,二维码解码,透明背景二维码";
+}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="/ercode/create">二维码生成</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <table class="inner-table">
+                        <tr>
+                            <td>内容：</td>
+                            <td>
+                                <textarea spellcheck="false" id="selText" class="form-control" rows="3">http://www.ofmonkey.com</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>纠错：</td>
+                            <td>
+                                <select id="selLevel" class="form-control">
+                                    <option value="L">L 7%</option>
+                                    <option value="M">M 15%</option>
+                                    <option value="Q">Q 25%</option>
+                                    <option value="H">H 30%</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>尺寸：</td>
+                            <td>
+                                <input id="txtScale" type="text" class="form-control" value="150" placeholder="最大不能超过800像素" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>边距：</td>
+                            <td>
+                                <select id="selMargin" class="form-control">
+                                    @for (int i = 0; i <= 2; i++) {
+                                        if (i == 0) {
+                                            <option selected="selected">@i</option>
+                                        } else {
+                                            <option>@i</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input id="chkTrans" type="checkbox" />
+                                <label for="chkTrans" class="lblNormal">背景透明</label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="compare-second">
+                    <p><button id="btnErcode" class="btn btn-primary">生成 &gt;</button></p>
+                </td>
+                <td class="compare-third">
+                    <img id="imgPreview" class="img-thumbnail" src="~/Images/ercode.png" style="max-width:150px;max-height:150px;" />
+                    <p class="mt15">
+                        [ 请右击图片另存为... ]
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/Assets/js/ercode/create.js"></script>
+}

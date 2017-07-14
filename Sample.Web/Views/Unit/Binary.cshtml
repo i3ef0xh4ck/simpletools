@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "二进制转换,任意进制转换";
+    ViewBag.Keywords = "二进制转换,任意进制转换";
+    ViewBag.Description = "二进制转换,任意进制转换";
+}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="/unit/binary">进制换算</a></li>
+    <li><a href="/unit/time">时间换算</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <table class="inner-table">
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">十进制</button>
+                                </span>
+                                <input id="txt10" type="text" class="form-control" value="1024">
+                                <span class="input-group-btn">
+                                    <button data-val="10" class="btn btn-primary btnCal" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">二进制</button>
+                                </span>
+                                <input id="txt2" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button data-val="2" class="btn btn-primary btnCal" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">八进制</button>
+                                </span>
+                                <input id="txt8" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button data-val="8" class="btn btn-primary btnCal" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">十六进制</button>
+                                </span>
+                                <input id="txt16" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button data-val="16" class="btn btn-primary btnCal" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="compare-second"></td>
+                <td class="compare-third"></td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/unit/binary.js"></script>
+}
+

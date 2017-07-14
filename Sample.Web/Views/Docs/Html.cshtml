@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Html转义字符";
+    ViewBag.Keywords = "Html转义字符";
+    ViewBag.Description = "Html转义字符";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/docs/http">Http状态码</a></li>
+    <li><a href="/docs/contenttype">Content-Type</a></li>
+    <li class="active"><a href="/docs/html">Html转义字符</a></li>    
+    <li><a href="/docs/ascii">ASCII码表</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="table table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <th>字符</th>
+                    <th>十进制</th>
+                    <th>转义字符</th>
+                </tr>
+                <tr>
+                    <td>"</td>
+                    <td>&amp;#34;</td>
+                    <td>&amp;quot;</td>
+                </tr>
+                <tr>
+                    <td>&amp;</td>
+                    <td>&amp;#38;</td>
+                    <td>&amp;amp;</td>
+                </tr>
+                <tr>
+                    <td>&lt;</td>
+                    <td>&amp;#60;</td>
+                    <td>&amp;lt;</td>
+                </tr>
+                <tr>
+                    <td>&gt;</td>
+                    <td>&amp;#62;</td>
+                    <td>&amp;gt;</td>
+                </tr>
+                <tr>
+                    <td>空格</td>
+                    <td>&amp;#160;</td>
+                    <td>&amp;nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

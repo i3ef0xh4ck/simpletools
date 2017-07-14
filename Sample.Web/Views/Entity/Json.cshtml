@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Json生成实体";
+    ViewBag.Keywords = "Json生成实体";
+    ViewBag.Description = "Json生成实体";
+}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="/entity/json">json生成实体</a></li>
+    <li><a href="/entity/xml">xml生成实体</a></li>
+    <li><a href="/entity/string">字符串生成实体</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea spellcheck="false" id="txtSourceJsonEntity" class="form-control" rows="21">{
+    "ID": 1,
+    "Name": "jack",
+    "Address": {
+        "Province": "浙江",
+        "City": {
+            "Name": "杭州",
+            "Code": "310000"
+        }
+    },
+    "Hobby": [
+        {
+            "Category": "运动",
+            "Name": "篮球"
+        },
+        {
+            "Category": "音乐",
+            "Name": "小提琴"
+        }
+    ]
+}</textarea>
+                </td>
+                <td class="compare-second">
+                    <p>
+                        <select id="selJsonCate" class="form-control" style="width:50%;margin:0 auto;">
+                            <option>C#</option>
+                            <option>Java</option>
+                        </select>
+                    </p>
+                    <p><button id="btnJsonEntity" class="btn btn-primary">生成 &gt;</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea id="txtDestJsonEntity" spellcheck="false" class="form-control" rows="21"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/entity/common.js"></script>
+    <script src="/assets/js/entity/json.js"></script>
+}

@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "UrlEncode编码解码/Html编码解码/ASCII编码解码/UTF8编码解码/Unicode编码解码";
+    ViewBag.Keywords = "UrlEncode编码解码 | Html编码解码 | ASCII编码解码 | UTF8编码解码 | Unicode编码解码";
+    ViewBag.Description = "UrlEncode编码解码、Html编码解码、ASCII编码解码、UTF8编码解码、Unicode编码解码";
+}
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#urlencode">UrlEncode</a></li>
+    <li><a href="#htmlencode">HtmlEncode</a></li>
+    <li><a href="#ascii">ASCII</a></li>
+    <li><a href="#utf8">UTF-8</a></li>
+    <li><a href="#unicode">Unicode</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane" id="urlencode">
+        @Html.Partial("_UrlEncode")
+    </div>
+    <div class="tab-pane" id="htmlencode">
+        @Html.Partial("_HtmlEncode")
+    </div>
+    <div class="tab-pane active" id="ascii">
+        @Html.Partial("_AscII")
+    </div>
+    <div class="tab-pane" id="utf8">
+        @Html.Partial("_Utf8")
+    </div>
+    <div class="tab-pane" id="unicode">
+        @Html.Partial("_Unicode")
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+
+
+
+
+
+

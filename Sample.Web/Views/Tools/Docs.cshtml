@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "常用参考表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Keywords = "js压缩格式化 | css压缩格式化 | html压缩格式化 | json压缩格式化";
+    ViewBag.Description = "js压缩格式化、css压缩格式化、html压缩格式化、json压缩格式化";
+}
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#contenttype">Content-Type</a></li>
+    <li><a href="#htmlcode">Html转义字符</a></li>
+    <li><a href="#httpcode">Http状态码</a></li>
+    <li><a href="#ascii">ASCII码表</a></li>
+    <li><a href="#regex">正则表达式</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane" id="contenttype">
+        @Html.Partial("_ContentType")
+    </div>
+    <div class="tab-pane" id="htmlcode">
+        @Html.Partial("_HtmlCode")
+    </div>
+    <div class="tab-pane" id="httpcode">
+        @Html.Partial("_HttpCode")
+    </div>
+    <div class="tab-pane" id="ascii">
+        @Html.Partial("_ASCIICode")
+    </div>
+    <div class="tab-pane" id="regex">
+        @Html.Partial("_Regex")
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+

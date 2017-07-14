@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "正则测试";
+    ViewBag.Keywords = "正则测试";
+    ViewBag.Description = "正则测试";
+}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="/regex/test">正则测试</a></li>
+    <li><a href="/regex/docs">正则参考</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <table class="inner-table">
+                        <tr>
+                            <td>
+                                <textarea id="txtRegexPattern" spellcheck="false" class="form-control" rows="2" placeholder="请填写正则">\w+?(\d+)\w+?([\u4e00-\u9fa5]+)</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea id="txtRegexContent" spellcheck="false" class="form-control" rows="15" placeholder="请填写内容">hello123world世界</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="chkIgnoreCase" type="checkbox" checked="checked">
+                                <label for="chkIgnoreCase" class="lblNormal">忽略大小写</label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="compare-second">
+                    <p><button id="btnRegexMatch" class="btn btn-primary">执行 &gt;</button></p>
+                </td>
+                <td class="compare-third" valign="top">
+                    <table class="inner-table">
+                        <tr>
+                            <td><textarea id="txtRegexTip" spellcheck="false" class="form-control" rows="2" disabled="disabled"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea spellcheck="false" id="txtRegexResult" class="form-control" rows="15" placeholder="匹配结果"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+
+@section Script{
+    <script src="/Assets/js/regex/test.js"></script>
+}
+

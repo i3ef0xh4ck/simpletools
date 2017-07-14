@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{47C312DC-846C-4EFF-BB56-8233B5D335A8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sample.BLL</RootNamespace>
+    <AssemblyName>Sample.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IpLocator">
+      <HintPath>..\..\refdlls\IpLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="MpLocator">
+      <HintPath>..\..\refdlls\MpLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\refdlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="zxing">
+      <HintPath>..\..\refdlls\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation">
+      <HintPath>..\..\refdlls\zxing.presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AESService.cs" />
+    <Compile Include="ASCIIService.cs" />
+    <Compile Include="BaseService.cs" />
+    <Compile Include="HelpService.cs" />
+    <Compile Include="HttpRequestService.cs" />
+    <Compile Include="HttpService.cs" />
+    <Compile Include="LogService.cs" />
+    <Compile Include="QueryService.cs" />
+    <Compile Include="ValidateCode.cs" />
+    <Compile Include="BarcodeService.cs" />
+    <Compile Include="Base64Service.cs" />
+    <Compile Include="DES3Service.cs" />
+    <Compile Include="DESService.cs" />
+    <Compile Include="ErcodeService.cs" />
+    <Compile Include="HtmlService.cs" />
+    <Compile Include="JsonService.cs" />
+    <Compile Include="Md5Service.cs" />
+    <Compile Include="MessageService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UrlService.cs" />
+    <Compile Include="Utf8Service.cs" />
+    <Compile Include="XmlService.cs" />
+    <Compile Include="XmlTransfer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sample.Model\Sample.Model.csproj">
+      <Project>{f2554860-b9fe-4106-ad71-e265e395455a}</Project>
+      <Name>Sample.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Simple\Simple.csproj">
+      <Project>{b39c387e-3ab6-4d59-a3d4-0c9004b31ad3}</Project>
+      <Name>Simple</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

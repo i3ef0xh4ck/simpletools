@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "xml生成实体";
+    ViewBag.Keywords = "xml生成实体";
+    ViewBag.Description = "xml生成实体";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/entity/json">json生成实体</a></li>
+    <li class="active"><a href="/entity/xml">xml生成实体</a></li>
+    <li><a href="/entity/string">字符串生成实体</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea spellcheck="false" id="txtSourceXmlEntity" class="form-control" rows="21">
+&lt;note&gt;
+    &lt;to&gt;George&lt;/to&gt;
+    &lt;from&gt;John&lt;/from&gt;
+    &lt;heading title=&quot;forgive me&quot;&gt;Reminder&lt;/heading&gt;
+    &lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+&lt;/note&gt;
+                    </textarea>
+                </td>
+                <td class="compare-second">
+                    <p>
+                        <select id="selXmlCate" class="form-control" style="width:50%;margin:0 auto;">
+                            <option>C#</option>
+                            <option>Java</option>
+                        </select>
+                    </p>
+                    <p><button id="btnXmlEntity" class="btn btn-primary">生成 &gt;</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea id="txtDestXmlEntity" spellcheck="false" class="form-control" rows="21"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/entity/common.js"></script>
+    <script src="/assets/js/entity/xml.js"></script>
+}

@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "json格式化,json压缩";
+    ViewBag.Keywords = "json格式化,json压缩";
+    ViewBag.Description = "json格式化,json压缩";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/format/js">js格式化</a></li>
+    <li><a href="/format/html">html格式化</a></li>
+    <li><a href="/format/css">css格式化</a></li>
+    <li class="active"><a href="/format/json">json格式化</a></li>
+    <li><a href="/format/xml">xml格式化</a></li>
+    <li><a href="/format/sql">sql格式化</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <textarea spellcheck="false" id="json_text" class="form-control" rows="18"> {"name":"王小二","age":15,"address":{"province":"浙江","city":"杭州","district":"西湖区"},"hobby":["足球","棒球","乒乓球"]}</textarea>
+        <p class="mt15">
+            <button class="btn btn-primary" onclick="$('#json_text').format({method: 'json'})">格式化</button>
+            <button class="btn btn-primary" onclick="$('#json_text').format({ method: 'jsonmin'})">压缩</button>
+        </p>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/Assets/js/format/jquery-extend.js"></script>
+    <script src="/Assets/js/format/base.js"></script>
+    <script src="/Assets/js/format/jsformat.js"></script>
+    <script src="/Assets/js/format/htmlformat.js"></script>
+}

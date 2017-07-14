@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "xml格式化,xml压缩";
+    ViewBag.Keywords = "xml格式化,xml压缩";
+    ViewBag.Description = "xml格式化,xml压缩";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/format/js">js格式化</a></li>
+    <li><a href="/format/html">html格式化</a></li>
+    <li><a href="/format/css">css格式化</a></li>
+    <li><a href="/format/json">json格式化</a></li>
+    <li class="active"><a href="/format/xml">xml格式化</a></li>
+    <li><a href="/format/sql">sql格式化</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <textarea spellcheck="false" id="xml_text" class="form-control" rows="18">&lt;note&gt;&lt;to copy=&quot;true&quot;&gt;George&lt;/to&gt;&lt;from&gt;John&lt;/from&gt;&lt;heading&gt;Reminder&lt;/heading&gt;&lt;body&gt;Don't forget the meeting!&lt;/body&gt;&lt;/note&gt;</textarea>
+        <p class="mt15">
+            <button class="btn btn-primary" onclick="$('#xml_text').format({ method: 'xml' })">格式化</button>
+            <button class="btn btn-primary" onclick="$('#xml_text').format({ method: 'xmlmin' })">压缩</button>
+        </p>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/Assets/js/format/jquery-extend.js"></script>
+    <script src="/Assets/js/format/base.js"></script>
+    <script src="/Assets/js/format/jsformat.js"></script>
+    <script src="/Assets/js/format/htmlformat.js"></script>
+}

@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "IP归属地查询";
+    ViewBag.Keywords = "IP归属地查询";
+    ViewBag.Description = "IP归属地查询";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/query/local">本机IP</a></li>
+    <li><a href="/query/http">http模拟查询</a></li>
+    <li class="active"><a href="/query/ip">IP归属地查询</a></li>
+    <li><a href="/query/domain">域名归属地查询</a></li>
+    <li><a href="/query/phone">手机归属地查询</a></li>
+    <li><a href="/query/today">历史上的今天</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <div class="query-parent">
+            <div id="app" class="query-container">
+                <form class="query-form form-inline">
+                    <div class="form-group">
+                        <label class="query-tag">IP地址：</label>
+                        <input type="text" spellcheck="false" class="form-control query-input" v-model="ip" placeholder="请输入IP地址" />
+                    </div>
+                    <button v-on:click="getArea" v-bind="status == 1 ? '' : {disabled : 'disabled'}" type="button" class="btn btn-primary">查询</button>
+                </form>
+                <table class="table table-bordered">
+                    <tr>
+                        <td class="query-result-tag">地址段：</td>
+                        <td>{{scope}}</td>
+                    </tr>
+                    <tr>
+                        <td class="query-result-tag">归属地：</td>
+                        <td>{{area}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+
+@section Script{
+    <script src="/assets/js/query/ip.js"></script>
+}
+

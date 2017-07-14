@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "全角转半角,半角转全角";
+    ViewBag.Keywords = "全角转半角,半角转全角";
+    ViewBag.Description = "全角转半角,半角转全角";
+}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="/transfer/dbc">全角半角</a></li>
+    <li><a href="/transfer/upper">大小写转换</a></li>
+    <li><a href="/transfer/unix">Unix时间戳</a></li>
+    <li><a href="/transfer/len">字符长度</a></li>
+    <li><a href="/transfer/guid">GUID</a></li>
+    <li><a href="/transfer/url">URL参数格式化</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea spellcheck="false" id="txtSourceDbc" class="form-control " rows="18">abc</textarea>
+                </td>
+                <td class="compare-second">
+                    <p><button id="btnGetDbc" class="btn btn-primary">半转全 &gt;</button></p>
+                    <p><button id="btnGetDbcBack" class="btn btn-primary">&lt; 全转半</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea spellcheck="false" id="txtDestDbc" class="form-control" rows="18"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/transfer/dbc.js"></script>
+}

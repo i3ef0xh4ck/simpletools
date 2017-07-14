@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Barcode";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "条形码生成";
+    ViewBag.Keywords = "条形码生成 | 条形码解码";
+    ViewBag.Description = "条形码生成、条形码解码";
+}
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#barcode">条形码生成</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="barcode">
+        @Html.Partial("_Barcode")
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+
+
+
+
+

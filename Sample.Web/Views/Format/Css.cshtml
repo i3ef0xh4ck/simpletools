@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "css格式化,css压缩,css格式多行,css格式单行";
+    ViewBag.Keywords = "css格式化,css压缩,css格式多行,css格式单行";
+    ViewBag.Description = "css格式化,css压缩,css格式多行,css格式单行";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/format/js">js格式化</a></li>
+    <li><a href="/format/html">html格式化</a></li>
+    <li class="active"><a href="/format/css">css格式化</a></li>
+    <li><a href="/format/json">json格式化</a></li>
+    <li><a href="/format/xml">xml格式化</a></li>
+    <li><a href="/format/sql">sql格式化</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <textarea spellcheck="false" id="css_text" class="form-control" rows="18">.pagination {display: inline-block;padding-left: 0;margin: 20px 0;border-radius: 4px;}.pagination li {display: inline;}</textarea>
+        <p class="mt15">
+            <button class="btn btn-primary" onclick="$('#css_text').format({method: 'css'})">多行</button>
+            <button class="btn btn-primary" onclick="$('#css_text').format({method: 'cssone'})">单行</button>
+            <button class="btn btn-primary" onclick="$('#css_text').format({method: 'cssmin'})">压缩</button>
+        </p>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/Assets/js/format/jquery-extend.js"></script>
+    <script src="/Assets/js/format/base.js"></script>
+    <script src="/Assets/js/format/jsformat.js"></script>
+    <script src="/Assets/js/format/htmlformat.js"></script>
+}

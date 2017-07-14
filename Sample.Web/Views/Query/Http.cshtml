@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "http模拟查询，http接口在线调试";
+    ViewBag.Keywords = "http模拟查询，http接口在线调试";
+    ViewBag.Description = "http模拟查询，http接口在线调试";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/query/local">本机IP</a></li>
+    <li class="active"><a href="/query/http">http模拟查询</a></li>
+    <li><a href="/query/ip">IP归属地查询</a></li>
+    <li><a href="/query/domain">域名归属地查询</a></li>
+    <li><a href="/query/phone">手机归属地查询</a></li>
+    <li><a href="/query/today">历史上的今天</a></li>
+</ul>
+<div class="tab-content">
+    <div id="app" class="tab-pane active">
+        <table class="compare-table http-table">
+            <tbody>
+                <tr>
+                    <td>
+                        <table style="width:100%;">
+                            <tbody>
+                                <tr>
+                                    <td style="width:10%;">
+                                        <select v-model="method" class="form-control">
+                                            <option value="get">GET</option>
+                                            <option value="post">POST</option>
+                                        </select>
+                                    </td>
+                                    <td style="width: 80%; padding:0px 5px;">
+                                        <input v-model="url" spellcheck="false" type="text" class="form-control" value="http://www.ofmonkey.com" placeholder="请填写网址，暂不支持https" />
+                                    </td>
+                                    <td style="width:10%;">
+                                        <button v-on:click="request" v-bind="status == 1 ? '' : {'disabled':'disabled'}" type="button" class="btn btn-primary btn-block">请求</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea v-model="param" spellcheck="false" class="form-control" rows="2" placeholder="如果有参数，在些填入参数，格式为：name=tom&age=28&sex=1"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea v-model="result" id="html_text" spellcheck="false" class="form-control" rows="14" placeholder="返回结果"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <button id="beautify" type="button" class="btn btn-success">html格式化</button>
+            <button type="button" class="btn btn-primary" onclick="$('#html_text').format({ method: 'json' })">json格式化</button>
+            <button type="button" class="btn btn-danger" onclick="$('#html_text').format({ method: 'xml' })">xml格式化</button>
+            <button id="btnRecover" type="button" class="btn btn-default">还原</button>
+        </p>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+
+@section Script{
+    <script src="~/Assets/plugins/layer/layer.js"></script>
+    <script src="/Assets/js/format/jquery-extend.js"></script>
+    <script src="/Assets/js/format/base.js"></script>
+    <script src="/Assets/js/format/jsformat.js"></script>
+    <script src="/Assets/js/format/htmlformat.js"></script>
+    <script src="/assets/js/query/http.js"></script>
+}
+

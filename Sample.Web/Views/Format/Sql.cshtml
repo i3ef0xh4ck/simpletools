@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "sql格式化,sql压缩,sql美化";
+    ViewBag.Keywords = "sql格式化,sql压缩,sql美化";
+    ViewBag.Description = "sql格式化,sql压缩,sql美化";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/format/js">js格式化</a></li>
+    <li><a href="/format/html">html格式化</a></li>
+    <li><a href="/format/css">css格式化</a></li>
+    <li><a href="/format/json">json格式化</a></li>
+    <li><a href="/format/xml">xml格式化</a></li>
+    <li class="active"><a href="/format/sql">sql格式化</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <textarea spellcheck="false" id="sql_text" class="form-control" rows="18">select id,name from user where type=1 order by id desc</textarea>
+        <p class="mt15">
+            <button class="btn btn-primary" onclick="$('#sql_text').format({ method: 'sql' })">格式化</button>
+            <button class="btn btn-primary" onclick="$('#sql_text').format({ method: 'sqlmin' })">压缩</button>
+        </p>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/Assets/js/format/jquery-extend.js"></script>
+    <script src="/Assets/js/format/base.js"></script>
+    <script src="/Assets/js/format/jsformat.js"></script>
+    <script src="/Assets/js/format/htmlformat.js"></script>
+}

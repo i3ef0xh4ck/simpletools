@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "IP归属地查询/域名归属地查询/手机归属地查询";
+    ViewBag.Keywords = "IP归属地查询 | 域名归属地查询 | 手机归属地查询";
+    ViewBag.Description = "IP归属地查询、域名归属地查询、手机归属地查询";
+}
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#ip">IP归属地查询</a></li>
+    <li><a href="#domain">域名归属地查询</a></li>
+    <li><a href="#phone">手机归属地查询</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane" id="ip">
+        @Html.Partial("_IPQuery")
+    </div>
+    <div class="tab-pane" id="domain">
+        @Html.Partial("_DomainQuery")
+    </div>
+    <div class="tab-pane" id="phone">
+        @Html.Partial("_PhoneQuery")
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+

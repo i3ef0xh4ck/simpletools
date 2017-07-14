@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Entity";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Json生成实体/xml生成实体/字符串生成实体";
+    ViewBag.Keywords = "Json生成实体 | xml生成实体 | 字符串生成实体";
+    ViewBag.Description = "Json生成实体、字符串生成实体、xml生成实体";
+}
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#json">json生成实体</a></li>
+    <li><a href="#xml">xml生成实体</a></li>
+    <li><a href="#str">字符串生成实体</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="json">
+        @Html.Partial("_JsonEntity")
+    </div>
+    <div class="tab-pane active" id="xml">
+        @Html.Partial("_XmlEntity")
+    </div>
+    <div class="tab-pane active" id="str">
+        @Html.Partial("_StringEntity")
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+
+

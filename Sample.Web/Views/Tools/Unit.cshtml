@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Unit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "二进制换算/时间换算";
+    ViewBag.Keywords = "二进制换算 | 时间换算";
+    ViewBag.Description = "二进制换算、时间换算";
+}
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#jinzhi">进制换算</a></li>
+    <li><a href="#time">时间换算</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="jinzhi">
+        @Html.Partial("_Binary")
+    </div>
+    <div class="tab-pane active" id="time">
+        @Html.Partial("_Time")
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+

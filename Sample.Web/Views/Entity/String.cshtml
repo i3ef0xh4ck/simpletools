@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "字符串生成实体";
+    ViewBag.Keywords = "字符串生成实体";
+    ViewBag.Description = "字符串生成实体";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/entity/json">json生成实体</a></li>
+    <li><a href="/entity/xml">xml生成实体</a></li>
+    <li class="active"><a href="/entity/string">字符串生成实体</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea spellcheck="false" id="txtSourceStr" class="form-control" rows="18">ID(i),Name(s),Age(i),Birthday(d),Married(b),Address</textarea>
+                </td>
+                <td class="compare-second">
+                    <p>
+                        <select id="selStrCate" class="form-control" style="width:60%;margin:0 auto;">
+                            <option>C#</option>
+                            <option>Java</option>
+                        </select>
+                    </p>
+                    <p><button id="btnStr" class="btn btn-primary">生成 &gt;</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea spellcheck="false" id="txtDestStr" class="form-control" rows="18"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="alert alert-warning" role="alert" style="text-align:left; margin-top:10px;">
+                        注：括号中字符表示类型，i->int,s->string,d->DateTime,b->bool,如果没有括号，默认为string类型
+                    </div>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/entity/common.js"></script>
+    <script src="/assets/js/entity/str.js"></script>
+}

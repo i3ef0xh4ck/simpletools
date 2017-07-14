@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "本机IP,本机UserAgent";
+    ViewBag.Keywords = "本机IP,本机UserAgent";
+    ViewBag.Description = "本机IP,本机UserAgent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="/query/local">本机IP</a></li>
+    <li><a href="/query/http">http模拟查询</a></li>
+    <li><a href="/query/ip">IP归属地查询</a></li>
+    <li><a href="/query/domain">域名归属地查询</a></li>
+    <li><a href="/query/phone">手机归属地查询</a></li>
+    <li><a href="/query/today">历史上的今天</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="table table-hover table-bordered">
+            <tbody>
+                <tr>
+                    <td style="width:150px;">本机IP</td>
+                    <td>@ViewBag.HttpModel.IP</td>
+                </tr>
+                <tr>
+                    <td>用户代理</td>
+                    <td>@ViewBag.HttpModel.UserAgent</td>
+                </tr>
+                <tr>
+                    <td>浏览器类型</td>
+                    <td>@ViewBag.HttpModel.BrowserType</td>
+                </tr>
+                <tr>
+                    <td>浏览器版本</td>
+                    <td>@ViewBag.HttpModel.BrowserVersion</td>
+                </tr>
+                <tr>
+                    <td>浏览器语言</td>
+                    <td>@ViewBag.HttpModel.Language</td>
+                </tr>
+                <tr>
+                    <td>分辨率</td>
+                    <td id="tdRatio"></td>
+                </tr>
+                <tr>
+                    <td>操作系统</td>
+                    <td>@ViewBag.HttpModel.OperSystem</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Script{
+    <script>
+        $(function () {
+            $("#tdRatio").html(window.screen.width + " * " + window.screen.height);
+        })
+    </script>
+}
+
+

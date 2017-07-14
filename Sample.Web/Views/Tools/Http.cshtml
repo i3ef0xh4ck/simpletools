@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Http";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "本机IP/http模拟";
+    ViewBag.Keywords = "本机IP | http模拟";
+    ViewBag.Description = "本机IP、http模拟";
+}
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#ip">本机IP</a></li>
+    <li><a href="#http">http模拟</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="ip">
+        @Html.Partial("_ip")
+    </div>
+    <div class="tab-pane active" id="http">
+        <table class="compare-table">
+            <tr>
+                <td colspan="3">
+                    <table style="width:100%;">
+                        <tr>
+                            <td style="width:10%;">
+                                <select class="form-control">
+                                    <option>GET</option>
+                                    <option>POST</option>
+                                </select> 
+                            </td>
+                            <td style="width: 80%; padding:0px 5px;">
+                                <input type="text" class="form-control" placeholder="http://www.ofmonkey.com" />
+                            </td>
+                            <td style="width:10%;">
+                                <button class="btn btn-success btn-block">请求</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td class="compare-first">
+                    <textarea class="form-control" rows="18" placeholder="Response Body"></textarea>
+                </td>
+                <td class="compare-third">
+                    <textarea class="form-control" rows="18" style="width:95%;float:right;" placeholder="Response Header"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>

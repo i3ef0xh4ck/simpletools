@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "html格式化,html压缩";
+    ViewBag.Keywords = "html格式化,html压缩";
+    ViewBag.Description = "html格式化,html压缩";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/format/js">js格式化</a></li>
+    <li class="active"><a href="/format/html">html格式化</a></li>
+    <li><a href="/format/css">css格式化</a></li>
+    <li><a href="/format/json">json格式化</a></li>
+    <li><a href="/format/xml">xml格式化</a></li>
+    <li><a href="/format/sql">sql格式化</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <textarea spellcheck="false" id="html_text" class="form-control" rows="18">&lt;div class="item-bd"&gt;&lt;div class="item" title="IP查询"&gt;IP查询&lt;/div&gt;&lt;/div&gt;</textarea>
+        <p class="mt15">
+            <button id="beautify" class="btn btn-primary">格式化</button>
+            <button id="htmljsmin" class="btn btn-primary">压缩</button>
+        </p>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/Assets/js/format/jquery-extend.js"></script>
+    <script src="/Assets/js/format/base.js"></script>
+    <script src="/Assets/js/format/jsformat.js"></script>
+    <script src="/Assets/js/format/htmlformat.js"></script>
+}

@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "px转rem";
+    ViewBag.Keywords = "px转rem,像素转rem";
+    ViewBag.Description = "px转rem,,像素转rem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/front/color">调色板</a></li>
+    <li><a href="/front/hex">RGB转16进制</a></li>
+    <li class="active"><a href="/front/rem">px转rem</a></li>
+    <li><a href="/front/markdown">在线MarkDown编辑器</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea spellcheck="false" id="txtSourceRem" class="form-control" rows="21"> .item{
+     width: 200px;
+     height: 150px;
+     border: 1px solid #ccc;
+     margin: 10px auto;
+     padding: 5px;
+}
+</textarea>
+                </td>
+                <td class="compare-second" style="text-align:center;">
+                    <p style="width:90%;margin:5px auto;">
+                        <span>1rem=</span>
+                        <input id="txtRemIntalize" type="text" class="form-control" style="width:45px;display:inline-block;" value="16" />
+                        <span>px</span>
+                    </p>
+                    <p><button id="btnToRem" class="btn btn-primary">转换 &gt;</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea id="txtDestRem" spellcheck="false" class="form-control" rows="21"></textarea>
+                </td>
+            </tr>
+        </table>
+        <p style="margin-top:10px;">
+            <input id="chkIgnoreBorder" type="checkbox" checked="checked">
+            <label for="chkIgnoreBorder" class="lblNormal">不处理border</label>
+        </p>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/Assets/js/format/jquery-extend.js"></script>
+    <script src="/Assets/js/format/base.js"></script>
+    <script src="/Assets/js/format/jsformat.js"></script>
+    <script src="/Assets/js/format/htmlformat.js"></script>
+    <script src="/assets/js/front/rem.js"></script>
+}
+

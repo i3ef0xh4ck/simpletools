@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "在线调色板";
+    ViewBag.Keywords = "在线调色板";
+    ViewBag.Description = "在线调色板";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Css{
+    <link rel="stylesheet" type="text/css" href="~/Assets/plugins/colorpicker/spectrum.css" />
+}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="/front/color">调色板</a></li>
+    <li><a href="/front/hex">RGB转16进制</a></li>
+    <li><a href="/front/rem">px转rem</a></li>
+    <li><a href="/front/markdown">在线MarkDown编辑器</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <input id="full" />
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script type="text/javascript" src="~/Assets/plugins/colorpicker/spectrum.js"></script>
+    <script type='text/javascript' src='~/Assets/plugins/colorpicker/docs.js'></script>
+}
+
+

@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "意见反馈";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h2>意见反馈</h2>
+</div>
+<!-- 多说评论框 start -->
+<div class="ds-thread" style="width:60%;" data-thread-key="message_1" data-title="意见反馈" data-url="http://www.ofmonkey.com/m/message"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    var duoshuoQuery = { short_name: "ofmonkey" };
+    (function () {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript'; ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+<script>
+    $(function () {
+        var text = $(".ds-thread").text();
+        if (text == "评论框出错啦(990015): 服务异常,请联系客服人员") {
+            location.reload();
+        }
+    });
+</script>

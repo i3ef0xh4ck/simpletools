@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "正则表达式测试";
+    ViewBag.Keywords = "正则表达式测试";
+    ViewBag.Description = "正则表达式测试";
+}
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#regex">正则测试</a></li>
+    <li><a href="#regexdoc">正则参考</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="regex">
+        @Html.Partial("_RegexTest")
+    </div>
+    <div class="tab-pane active" id="regexdoc">
+        @Html.Partial("_Regex")
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>

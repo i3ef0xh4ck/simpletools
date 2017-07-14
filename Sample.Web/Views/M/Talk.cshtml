@@ -1,0 +1,89 @@
+﻿@using Sample.Model
+@using Sample.Web.Infrastructure
+@model List<Message>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "意见反馈";
+}
+@section Script{
+    <script src="/assets/js/m/talk.js" ></script>
+    <script>
+        $(function () {
+            $("#GL_StandardCode").click(function () {
+                var newSrc = "@Url.Action("authcode", "fun")" + "?t=" + (new Date()).getTime();
+                this.src = newSrc;
+                return false;
+            });
+
+            $("#changeCode").click(function () {
+                var newSrc = "@Url.Action("authcode", "fun")" + "?t=" + (new Date()).getTime();
+                $("#GL_StandardCode").attr("src", newSrc);
+            });
+        });
+    </script>
+}
+<h2 class="page-title">意见反馈</h2>
+<div style="width:70%;">
+    <div class="message-place">
+        <table style="width:100%;">
+            <tbody>
+                <tr>
+                    <td>
+                        <textarea id="txtContent" class="form-control" rows="5" placeholder="留言内容"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table style="width:100%;">
+                            <tr>
+                                <td><input id="txtName" type="text" class="form-control" style="margin-top:12px;" placeholder="留言人" value="匿名"></td>
+                                <td>
+                                    <button class="btn btn-default btnRandom" style="margin-top:12px;margin-left:10px;">随机</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="txtCode" type="text" class="form-control" style="margin-top: 12px; width: 120px;float:left;" placeholder="验证码">
+                        <img id="GL_StandardCode" style="margin-top: 12px; float:left; cursor: pointer;border:1px solid #ddd;margin-left:5px;" src="/fun/authcode?t=636220825755937500" title="看不清，点击换一张">
+                        <a id="changeCode" style="float:left;position:relative;top:20px;left:5px;" href="javascript:void(0)">换一张</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-top:10px;">
+                        <button class="btn btn-success btnLeave">提交留言</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h5>共 @ViewBag.Total 条留言</h5>
+    <div class="message-container">
+        @if (Model != null && Model.Any()) {
+            foreach (var item in Model) {
+                <div class="media message-item">
+                    <div class="media-left">
+                        @if (item.Name == "站长") {
+                           <img class="media-object message-avatar" src="/Images/manage-avatar.jpg" alt=""> 
+                        } else { 
+                        <img class="media-object message-avatar" src="/Images/default-avatar.jpg" alt="">
+                        }
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading message-name">@item.Name</h4>
+                        <p class="message-content">
+                            @item.Content
+                        </p>
+                        <p>
+                            <span class="message-time">@item.IntimeStr</span>
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+       <a href="javascript:void(0)" class="message-more">加载更多</a>
+    </div>
+</div>
+<input type="hidden" id="hidTotalPages" value="@ViewBag.TotalPages" />

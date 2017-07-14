@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "js格式化,js压缩,js混淆,js加密,js解密";
+    ViewBag.Keywords = "js格式化,js压缩,js混淆,js加密,js解密";
+    ViewBag.Description = "js格式化,js压缩,js混淆,js加密,js解密";
+}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="/format/js">js格式化</a></li>
+    <li><a href="/format/html">html格式化</a></li>
+    <li><a href="/format/css">css格式化</a></li>
+    <li><a href="/format/json">json格式化</a></li>
+    <li><a href="/format/xml">xml格式化</a></li>
+    <li><a href="/format/sql">sql格式化</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <textarea spellcheck="false" id="html_text" class="form-control" rows="18">function filterFilter(){return function(array,expression,comparator){if(!isArrayLike(array)){if(array==null){return array}else{throw minErr('filter')('notarray','Expected array but received: {0}',array);}}var expressionType=getTypeForFilter(expression);var predicateFn;var matchAgainstAnyProp;switch(expressionType){case'function':predicateFn=expression;break;case'boolean':case'null':case'number':case'string':matchAgainstAnyProp=true;case'object':predicateFn=createPredicateFn(expression,comparator,matchAgainstAnyProp);break;default:return array}return Array.prototype.filter.call(array,predicateFn)}}</textarea>
+        <p class="mt15">
+            <button id="beautify" class="btn btn-primary">格式化</button>
+            <button id="htmljsmin" class="btn btn-primary">压缩</button>
+        </p>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/Assets/js/format/jquery-extend.js"></script>
+    <script src="/Assets/js/format/base.js"></script>
+    <script src="/Assets/js/format/jsformat.js"></script>
+    <script src="/Assets/js/format/htmlformat.js"></script>
+}

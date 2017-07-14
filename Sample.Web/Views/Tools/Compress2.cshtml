@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "js压缩格式化/css压缩格式化/html压缩格式化/json压缩格式化";
+    ViewBag.Keywords = "js压缩格式化 | css压缩格式化 | html压缩格式化 | json压缩格式化";
+    ViewBag.Description = "js压缩格式化、css压缩格式化、html压缩格式化、json压缩格式化";
+}
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#js">js格式化</a></li>
+    <li><a href="#css">css格式化</a></li>
+    <li><a href="#html">html格式化</a></li>
+    <li><a href="#json">json格式化</a></li>
+    <li><a href="#xml">xml格式化</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="js">
+        @Html.Partial("_JsCompress")
+    </div>
+    <div class="tab-pane active" id="css">
+        @Html.Partial("_CssCompress")
+    </div>
+    <div class="tab-pane active" id="html">
+        @Html.Partial("_HtmlCompress")
+    </div>
+    <div class="tab-pane active" id="json">
+        @Html.Partial("_JsonFormat")
+    </div>
+    <div class="tab-pane active" id="xml">
+        @Html.Partial("_XmlFormat")
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>

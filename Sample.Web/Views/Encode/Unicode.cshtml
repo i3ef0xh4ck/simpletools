@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Unicode编码,Unicode解码";
+    ViewBag.Keywords = "Unicode编码,Unicode解码";
+    ViewBag.Description = "Unicode编码,Unicode解码";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/encode/url">UrlEncode</a></li>
+    <li><a href="/encode/html">HtmlEncode</a></li>
+    <li><a href="/encode/ascii">ASCII</a></li>
+    <li><a href="/encode/utf8">UTF-8</a></li>
+    <li class="active"><a href="/encode/unicode">Unicode</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea id="txtSourceUnicode" class="form-control " rows="18">hello world!</textarea>
+                </td>
+                <td class="compare-second">
+                    <p><button id="btnUnicodeEncode" class="btn btn-primary">编码 &gt;</button></p>
+                    <p><button id="btnUnicodeDecode" class="btn btn-primary">&lt; 解码</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea id="txtDestUnicode" class="form-control" rows="18"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/encode/unicode.js"></script>
+}
+
+
+
+
+
+

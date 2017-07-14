@@ -1,0 +1,254 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>宝贝每日统计</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" href="/images/monkey.ico">
+    <link href="~/Content/themes/blueskin/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/themes/blueskin/js/jquery-2.0.3.min.js"></script>
+    <script src="~/Content/themes/blueskin/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/vue.min.js"></script>
+    <script src="~/Assets/tool/simple.js"></script>
+    <script src="~/Assets/plugins/layer/layer.js"></script>
+    <style type="text/css">
+        .table-method {
+            margin-top: 20px;
+        }
+
+        .table-nobordered td {
+            border: none !important;
+        }
+
+        .table-day {
+            width: 96%;
+            margin: 0 auto;
+        }
+
+            .table-day td {
+                text-align: center !important;
+            }
+
+        .item-container {
+            margin: 20px auto 5px auto;
+        }
+
+        .item-date {
+            text-align: center;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .button-selected {
+            background: #f642d7;
+        }
+        .row-total td{
+            color:orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="app" class="col-lg-12">
+                <h3 class="center">每日统计</h3>
+                <table class="table table-nobordered table-method">
+                    <tr>
+                        <td>
+                            <button v-on:click="changeMilk" v-bind:style="newRecord.milk == 0 ? '' : 'background:#fb60a7;color:#fff;'" class="btn btn-default btn-block" type="button">喂奶</button>
+                        </td>
+                        <td>
+                            <button v-on:click="changeBig" v-bind:style="newRecord.big == 0 ? '' : 'background:#fb60a7;color:#fff;'" class="btn btn-default btn-block" type="button">大便</button>
+                        </td>
+                        <td>
+                            <button v-on:click="changeSmall" v-bind:style="newRecord.small == 0 ? '' : 'background:#fb60a7;color:#fff;'" class="btn btn-default btn-block" type="button">小便</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" v-if="maual == 1">
+                            <input type="time" class="form-control" v-model="newRecord.time" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <button v-on:click="add" type="button" class="btn btn-info btn-block">提交</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="center">
+                            <button v-on:click="extra" type="button" class="btn btn-default btn-xs">补签</button>
+                            <button v-on:click="clear" type="button" class="btn btn-default btn-xs">清除</button>
+                        </td>
+                    </tr>
+                </table>
+                <div class="item-container" v-for="item in records">
+                    <p class="item-date">
+                        {{item.date}}
+                    </p>
+                    <table class="table table-bordered table-day">
+                        <tr>
+                            <td>时间</td>
+                            <td>喂奶</td>
+                            <td>大便</td>
+                            <td>小便</td>
+                        </tr>
+                        <tr v-for="row in item.list">
+                            <td>{{row.time}}</td>
+                            <td>{{row.milk == 1 ? '√' : ''}}</td>
+                            <td>{{row.big == 1 ? '√' : ''}}</td>
+                            <td>{{row.small == 1 ? '√' : ''}}</td>
+                        </tr>
+                        <tr class="row-total">
+                            <td>统计</td>
+                            <td>{{item.total.milk}}</td>
+                            <td>{{item.total.big}}</td>
+                            <td>{{item.total.small}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(function () {
+        if (!localStorage.baby_records) {
+            // 如果localStorage中没有记录，则添加当天记录
+            var obj = [{
+                date: (new Date()).format('yyyy-MM-dd'),
+                list: [],
+                total: {
+                    milk: 0,
+                    big: 0,
+                    small: 0
+                }
+            }];
+            localStorage.baby_records = JSON.stringify(obj);
+        }
+        else {
+            // 如果没有当天的日期行，则添加一条
+            var local = JSON.parse(localStorage.baby_records);
+            var current = (new Date()).format('yyyy-MM-dd');
+            var map = Object.create(null);
+            for (var index in local) {
+                var record = local[index];
+                map[record.date] = record;
+            }
+            if (map[current] == null) {
+                local.unshift({
+                    date: current,
+                    list: [],
+                    total: {
+                        milk: 0,
+                        big: 0,
+                        small: 0
+                    }
+                });
+            }
+            if (local.length > 30) {
+                local = local.slice(0, 30);   //最多显示30天的记录
+            }
+            localStorage.baby_records = JSON.stringify(local);
+        }
+        var records = JSON.parse(localStorage.baby_records);
+        new Vue({
+            el: '#app',
+            data: {
+                maual: 0,    //是否为补签
+                newRecord: {
+                    milk: 0,
+                    big: 0,
+                    small: 0,
+                    time: (new Date()).format("hh:mm")
+                },
+                records: records
+            },
+            methods: {
+                add: function () {
+                    var n = this.newRecord;
+                    if (n.milk == 0 && n.big == 0 && n.small == 0) {
+                        layer.msg('请至少选择一项');
+                        return false;
+                    }
+                    if (this.records) {
+                        var current = (new Date()).format('yyyy-MM-dd');
+                        var record = null;
+                        for (var index in this.records) {
+                            record = this.records[index];
+                            if (record.date == current) {
+                                var time = (this.maual == 0 ? (new Date()).format('hh:mm') : n.time);  //如果为补签，以补签值为准，如果不是，以当前时间为准
+                                var row = { milk: n.milk, big: n.big, small: n.small, time: time };
+                                var exist = false;
+                                for (var i = 0; i < record.list.length; i++) {
+                                    if (record.list[i].time == time) {
+                                        exist = true;
+                                        break;
+                                    }
+                                }
+                                if (!exist) {
+                                    record.list.push(row);
+                                    record.total.milk += row.milk;
+                                    record.total.big += row.big;
+                                    record.total.small += row.small;
+                                    localStorage.baby_records = JSON.stringify(this.records);
+                                    this.init();
+                                    layer.msg('添加成功');
+                                }
+                                else {
+                                    layer.msg('此分钟已经存在，请过一分钟再试');
+                                }
+                                break;
+                            }
+                        }
+                    }
+                },
+                extra: function () {
+                    this.maual ^= 1;
+                    this.newRecord.time = (new Date()).format('hh:mm');
+                },
+                clear: function () {
+                    var r = confirm('确定清除所有记录？');
+                    if (r) {
+                        if (this.records) {
+                            this.records = null;
+                            var obj = [{
+                                date: (new Date()).format('yyyy-MM-dd'),
+                                list: [],
+                                total: {
+                                    milk: 0,
+                                    big: 0,
+                                    small: 0
+                                }
+                            }];
+                            localStorage.baby_records = JSON.stringify(obj);
+                            this.records = obj;
+                        }
+                    }
+                },
+                init: function () {
+                    this.newRecord.milk = 0;
+                    this.newRecord.big = 0;
+                    this.newRecord.small = 0;
+                    this.newRecord.time = (new Date()).format('hh:mm');
+                },
+                changeMilk: function () {
+                    this.newRecord.milk ^= 1;
+                },
+                changeBig: function () {
+                    this.newRecord.big ^= 1;
+                },
+                changeSmall: function () {
+                    this.newRecord.small ^= 1;
+                }
+            }
+        });
+    });
+</script>

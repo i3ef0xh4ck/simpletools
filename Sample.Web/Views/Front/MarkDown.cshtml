@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "在线MarkDown编辑,实时预览";
+    ViewBag.Keywords = "在线MarkDown编辑,实时预览";
+    ViewBag.Description = "在线MarkDown编辑,实时预览";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Css{
+    <style>
+        blockquote {
+            border-left: #eee solid 5px;
+            padding-left: 20px;
+        }
+        code {
+            color: #D34B62;
+            background: #F9F2F4;
+        }
+        .markdown-container, .markdown-result {
+            width: 100%;
+            height: 450px;
+            text-align: left; 
+            overflow:scroll;
+            overflow-x:hidden;          
+        }
+        .markdown-result{
+            border:1px solid #ddd;
+            margin-left:15px;
+            position:relative;
+            top:-2px;      
+            padding:5px;      
+        }
+    </style>
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/front/color">调色板</a></li>
+    <li><a href="/front/hex">RGB转16进制</a></li>
+    <li><a href="/front/rem">px转rem</a></li>
+    <li class="active"><a href="/front/markdown">在线MarkDown编辑器</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea id="content" spellcheck="false" class="markdown-container" onkeyup="compile()">> ## 这是一个标题。
+>
+> 1.   这是第一行列表项。
+> 2.   这是第二行列表项。
+>
+> 给出一些例子代码：
+>
+>     return shell_exec("echo $input | $markdown_script");</textarea>
+                </td>
+                <td class="compare-third">
+                    <div id="result" class="markdown-result"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+
+@section Script{
+    <script src="/assets/plugins/showdown/dist/showdown.min.js" type="text/javascript"></script>
+    <script src="/assets/js/front/markdown.js"></script>
+}

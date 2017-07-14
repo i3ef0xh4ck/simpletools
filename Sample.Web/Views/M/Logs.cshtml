@@ -1,0 +1,43 @@
+﻿@using Sample.Model
+@using Sample.Web.Infrastructure
+@model List<Logs>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "开发日志";
+}
+
+<h2 class="page-title">开发日志</h2>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th style="width:120px;">时间</th>
+            <th>内容 </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any()) {
+            foreach (Logs item in Model) {
+                <tr>
+                    <td>@string.Format("{0:yyyy-MM-dd}", item.Intime)</td>
+                    <td>@Html.Raw(item.Content)</td>
+                </tr>
+            }
+        } else {
+            <tr>
+                <td colspan="2">
+                    暂无数据
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+ 
+<div class="row page-center">
+    @if (ViewBag.TotalPages > 1) {
+        <div class="pagination">
+            <ul class="pl0">
+                @Html.Pager((int)(ViewBag.TotalPages), (int)(ViewBag.PageIndex), "logs", null)
+            </ul>
+        </div>
+    }
+</div>

@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Base64加密,Base64解密";
+    ViewBag.Keywords = "Base64解密,Base64解密";
+    ViewBag.Description = "Base64解密,Base64解密";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/encrypt/md5">Md5</a></li>
+    <li class="active"><a href="/encrypt/base64">Base64</a></li>
+    <li><a href="/encrypt/image64">图片转Base64</a></li>
+    <li><a href="/encrypt/filemd5">文件Md5</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea spellcheck="false" id="txtSourceBase64" class="form-control " rows="18">123456</textarea>
+                </td>
+                <td class="compare-second">
+                    <p><button id="btnBase64Encode" class="btn btn-primary">加密 &gt;</button></p>
+                    <p><button id="btnBase64Decode" class="btn btn-primary">&lt; 解密</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea spellcheck="false" id="txtDestBase64" class="form-control" rows="18"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/encrypt/base64.js"></script>
+}

@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "生成GUID";
+    ViewBag.Keywords = "生成GUID";
+    ViewBag.Description = "生成GUID";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/transfer/dbc">全角半角</a></li>
+    <li><a href="/transfer/upper">大小写转换</a></li>
+    <li><a href="/transfer/unix">Unix时间戳</a></li>
+    <li><a href="/transfer/len">字符长度</a></li>
+    <li class="active"><a href="/transfer/guid">GUID</a></li>
+    <li><a href="/transfer/url">URL参数格式化</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <textarea spellcheck="false" id="txtSourceGuid" class="form-control " rows="18"></textarea>
+        <p class="mt15"><button id="btnGetGuid" class="btn btn-primary">生成</button></p>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/transfer/guid.js"></script>
+}

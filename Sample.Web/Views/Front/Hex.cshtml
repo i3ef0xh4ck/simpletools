@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "RGB颜色转16进制";
+    ViewBag.Keywords = "RGB颜色转16进制";
+    ViewBag.Description = "RGB颜色转16进制";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/front/color">调色板</a></li>
+    <li class="active"><a href="/front/hex">RGB转16进制</a></li>
+    <li><a href="/front/rem">px转rem</a></li>
+    <li><a href="/front/markdown">在线MarkDown编辑器</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <div id="app">
+            <table class="compare-table">
+                <tr>
+                    <td class="compare-first">
+                        <table class="inner-table" id="tableColor">
+                            <tr>
+                                <td>
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td style="color:red;">R</td>
+                                            <td><input spellcheck="false" v-on:keyup="rgbChange" v-on:change="rgbChange" type="number" max="255" min="0" class="form-control text-rgb" v-model="r" placeholder="0-255" /> </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color:green;">G</td>
+                                            <td><input spellcheck="false" v-on:keyup="rgbChange" v-on:change="rgbChange" type="number" max="255" min="0" class="form-control text-rgb" v-model="g" placeholder="0-255" /> </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="color:blue;">B</td>
+                                            <td><input spellcheck="false" v-on:keyup="rgbChange" v-on:change="rgbChange" type="number" max="255" min="0" class="form-control text-rgb" v-model="b" placeholder="0-255" /> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>#</td>
+                                            <td><input spellcheck="false" v-on:keyup="hexChange" class="form-control text-hex" v-model="hex" placeholder="#ffffff"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="compare-second"></td>
+                    <td class="compare-third">
+                        <div class="color-preview" :style="{'background-color':'#' + hex}"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/front/hex.js"></script>
+}
+

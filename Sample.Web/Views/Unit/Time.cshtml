@@ -1,0 +1,85 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "时间转换,日期转换,时分秒转换";
+    ViewBag.Keywords = "时间转换,日期转换,时分秒转换";
+    ViewBag.Description = "时间转换,日期转换,时分秒转换";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/unit/binary">进制换算</a></li>
+    <li class="active"><a href="/unit/time">时间换算</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <table class="inner-table">
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">天</button>
+                                </span>
+                                <input id="txtDay" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button data-val="day" class="btn btn-primary btnCalTime" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">时</button>
+                                </span>
+                                <input id="txtHour" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button data-val="hour" class="btn btn-primary btnCalTime" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">分</button>
+                                </span>
+                                <input id="txtMinute" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button data-val="minute" class="btn btn-primary btnCalTime" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">秒</button>
+                                </span>
+                                <input id="txtSecond" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button data-val="second" class="btn btn-primary btnCalTime" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">毫秒</button>
+                                </span>
+                                <input id="txtMillisecond" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button data-val="millisecond" class="btn btn-primary btnCalTime" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="compare-second"></td>
+                <td class="compare-third"></td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/unit/time.js"></script>
+}
+

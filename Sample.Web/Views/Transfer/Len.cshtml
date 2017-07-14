@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "字符串长度计算，文本长度计算";
+    ViewBag.Keywords = "字符串长度计算，文本长度计算";
+    ViewBag.Description = "字符串长度计算，文本长度计算";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/transfer/dbc">全角半角</a></li>
+    <li><a href="/transfer/upper">大小写转换</a></li>
+    <li><a href="/transfer/unix">Unix时间戳</a></li>
+    <li class="active"><a href="/transfer/len">字符长度</a></li>
+    <li><a href="/transfer/guid">GUID</a></li>
+    <li><a href="/transfer/url">URL参数格式化</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <textarea spellcheck="false" id="txtSourceLen" class="form-control " rows="18">hello world!世界</textarea>
+        <p class="mt15">
+            <div class="alert alert-warning alert-dismissible compress-tip" role="alert">
+                压缩比：100%
+            </div>
+            <div class="alert alert-warning alert-dismissible length-tip" role="alert" style="display: none;"></div>
+            <span id="btnGetLen" class="btn btn-primary">计算</span>
+        </p>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/transfer/len.js"></script>
+}

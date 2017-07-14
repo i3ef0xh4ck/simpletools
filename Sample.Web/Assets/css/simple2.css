@@ -1,0 +1,196 @@
+﻿.error-container {
+    height: 30px;
+    margin: 5px 0px;
+}
+
+.alert {
+    padding: 5px 10px;
+}
+
+.alert-dismissable .close, .alert-dismissible .close {
+    right: 0px;
+}
+
+/*.tab-content {
+    margin-top: 8px;
+}*/
+
+.compare-table {
+    width: 100%;
+}
+
+    .compare-table td {
+        text-align: center;
+    }
+
+.compare-first, .compare-third {
+    width: 43%;
+}
+
+.compare-second {
+    width: 14%;
+}
+
+.lblNormal {
+    font-weight: normal;
+}
+
+.main-para {
+    text-align: justify;
+    line-height: 180%;
+}
+
+.help-tip {
+    font-size: 13px;
+    font-weight: normal;
+    color: #666;
+}
+
+.help-table {
+    width: 100%;
+}
+
+    .help-table td {
+        text-align: center;
+        width: 50%;
+    }
+
+.help-image {
+    width: 280px;
+}
+
+.compare-first {
+    vertical-align: top;
+}
+
+.inner-table {
+    width: 100%;
+}
+
+    .inner-table td {
+        padding: 10px 0px;
+        text-align: left;
+    }
+
+.td-bordered {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.compress-tip, .length-tip {
+    display: none;
+    float: right;
+    width: auto;
+    text-align: right;
+}
+
+.CodeMirror {
+    border: 1px solid #ddd;
+}
+
+textarea {
+    font-size: 13px !important;
+    line-height: 150% !important;
+    text-decoration: none !important;
+}
+
+.side-nav {
+    margin: 0px;
+    padding: 0px;
+    position: fixed;
+    right: 10px;
+    bottom: 15px;
+    width: 40px;
+}
+
+    .side-nav a {
+        display: block;
+        width: 40px;
+        height: 40px;
+        text-decoration: none;
+        background: #666;
+        border-radius: 50%;
+        text-align: center;
+        color: #fff;
+        margin-bottom: 2px;
+        padding-top: 10px;
+    }
+
+        .side-nav a:hover {
+            background: #428bca;
+        }
+
+.message-place {
+    margin-bottom: 30px;
+}
+
+.message-item {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    margin-top: 0px !important;
+}
+
+.message-name {
+    font-size: 14px;
+    color: #428bca;
+}
+
+.message-avatar {
+    width: 32px;
+    height: 32px;
+}
+
+.message-content {
+}
+
+.message-time {
+    color: #666;
+    font-size: 13px;
+}
+
+.message-more {
+    display: block;
+    width: 100%;
+    height: 50px;
+    background: #efefef;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px 0;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.color-preview {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    background: #ffffff;
+    box-shadow: 5px 5px 3px #888888;
+}
+
+.account-top {
+    margin: 0;
+    padding: 0;
+    height: 45px;
+    line-height: 45px;
+    list-style: none;
+    margin-right: 15px;
+}
+
+    .account-top li {
+        margin-left: 30px;
+        float: left;
+    }
+
+        .account-top li a {
+            color: #999;
+        }
+
+            .account-top li a:hover {
+                color: #fff;
+                text-decoration: none;
+            }

@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "全角转半角/大小写切换/日期转时间戳/计算字符串长度";
+    ViewBag.Keywords = "全角转半角 | 大小写切换 | 日期转时间戳 | 计算字符串长度";
+    ViewBag.Description = "全角转半角、大小写切换、日期转时间戳、计算字符串长度";
+}
+
+<ul class="nav nav-tabs" id="myTab">    
+    <li><a href="#dbc">全角半角</a></li>
+    <li><a href="#upper">大小写转换</a></li>
+    <li><a href="#timestamp">Unix时间戳</a></li>
+    <li><a href="#strlen">字符长度</a></li>
+    <li><a href="#guid">GUID</a></li>  
+    <li><a href="#url">URL参数格式化</a></li>   
+</ul>
+<div class="tab-content">    
+    <div class="tab-pane active" id="dbc">
+        @Html.Partial("_Dbc")
+    </div>
+    <div class="tab-pane active" id="upper">
+        @Html.Partial("_Upper")
+    </div>
+    <div class="tab-pane active" id="timestamp">
+        @Html.Partial("_UnixTimeStamp")
+    </div>
+    <div class="tab-pane active" id="strlen">
+        @Html.Partial("_Len")
+    </div>
+    <div class="tab-pane" id="guid">
+        @Html.Partial("_Guid")
+    </div> 
+    <div class="tab-pane" id="url">
+        @Html.Partial("_FormatUrl")
+    </div> 
+    @Html.Partial("_ErrorTip")
+</div>

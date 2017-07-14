@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "文件转MD5";
+    ViewBag.Keywords = "文件转MD5";
+    ViewBag.Description = "文件转MD5";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/encrypt/md5">Md5</a></li>
+    <li><a href="/encrypt/base64">Base64</a></li>
+    <li><a href="/encrypt/image64">图片转Base64</a></li>
+    <li class="active"><a href="/encrypt/filemd5">文件Md5</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <div class="query-parent">
+            <div class="query-container">
+                <div class="file-md5">
+                    +上传文件
+                </div>
+                <table class="table table-bordered">
+                    <tr>
+                        <td class="query-result-tag">文件：</td>
+                        <td id="md5filename"></td>
+                    </tr>
+                    <tr>
+                        <td class="query-result-tag">大小：</td>
+                        <td id="md5filesize"></td>
+                    </tr>
+                    <tr>
+                        <td class="query-result-tag">Md5：</td>
+                        <td id="md5box"></td>
+                    </tr>
+                </table>
+                <p class="md5-remark">备注：html5实现，文件不会传到后台，请放心使用。</p>
+                <input type="file" id="md5file" style="visibility:hidden;">
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+
+@section Script{
+    <script src="/assets/tool/spark-md5.js"></script>
+    <script src="/assets/js/encrypt/filemd5.js"></script>
+}
+

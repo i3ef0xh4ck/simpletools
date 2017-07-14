@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Url参数格式化，Url参数转json";
+    ViewBag.Keywords = "Url参数格式化，Url参数转json";
+    ViewBag.Description = "Url参数格式化，Url参数转json";
+}
+
+<ul class="nav nav-tabs">
+    <li><a href="/transfer/dbc">全角半角</a></li>
+    <li><a href="/transfer/upper">大小写转换</a></li>
+    <li><a href="/transfer/unix">Unix时间戳</a></li>
+    <li><a href="/transfer/len">字符长度</a></li>
+    <li><a href="/transfer/guid">GUID</a></li>
+    <li class="active"><a href="/transfer/url">URL参数格式化</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea spellcheck="false" id="txtSourceUrl" class="form-control " rows="18">http://www.ofmonkey.com?name=tom&age=20&sex=male</textarea>
+                </td>
+                <td class="compare-second">
+                    <p><button id="btnFormatUrl" class="btn btn-primary">格式化 &gt;</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea spellcheck="false" id="txtDestUrl" class="form-control" rows="18"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+@section Script{
+    <script src="/assets/js/transfer/url.js"></script>
+}

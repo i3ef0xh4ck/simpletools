@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "调色板/在线拾色器/rgb转换/px转rem";
+    ViewBag.Keywords = "调色板 | 在线拾色器 | rgb转换 | px转rem";
+    ViewBag.Description = "调色板、在线拾色器、rgb转换、px转rem";
+}
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#color">调色板</a></li>
+    <li><a href="#rgb">RGB转16进制</a></li>
+    <li><a href="#rem">px转rem</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane" id="color">
+        @Html.Partial("_ColorPicker")
+    </div>
+    <div class="tab-pane" id="rgb">
+        @Html.Partial("_ColorTransfer")
+    </div>
+    <div class="tab-pane" id="rem">
+        @Html.Partial("_PxToRem")
+    </div>
+    @Html.Partial("_ErrorTip")
+</div>
+

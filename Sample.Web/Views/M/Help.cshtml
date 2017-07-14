@@ -1,0 +1,48 @@
+﻿@using Sample.Model
+@using Sample.Web.Infrastructure
+@model List<Help>
+@{
+    ViewBag.Title = "Help";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "赞助名单";
+}
+
+<div class="page-title">
+    <button style="float:right;" class="btn btn-primary btnHelp">赞助我 !!!</button>
+    <h2>赞助名单<span class="help-tip">（手动更新，数据可能有延迟）</span></h2>
+</div>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>时间</th>
+            <th>来源</th>
+            <th>赞助人</th>
+            <th>金额</th>
+        </tr>
+    </thead>
+    @if (Model != null && Model.Any()) {
+        foreach (Help item in Model) {
+            <tr>
+                <td>@string.Format("{0:yyyy-MM-dd}", item.Intime)</td>
+                <td>@item.Source</td>
+                <td>@item.Name</td>
+                <td>@string.Format("{0:0.00}", item.Money)</td>   
+            </tr>
+        }
+    } else {
+        <tr>
+            <td colspan="4">
+                暂无数据
+            </td>
+        </tr>
+    }    
+</table> 
+<div class="row page-center">
+    @if (ViewBag.TotalPages > 1) {
+        <div class="pagination">
+            <ul class="pl0">
+                @Html.Pager((int)(ViewBag.TotalPages), (int)(ViewBag.PageIndex), "help", null)
+            </ul>
+        </div>
+    }
+</div>
