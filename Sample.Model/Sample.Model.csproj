@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Funs.cs" />
+    <Compile Include="FunsCate.cs" />
     <Compile Include="Help.cs" />
     <Compile Include="JsonMessage.cs" />
     <Compile Include="Logs.cs" />

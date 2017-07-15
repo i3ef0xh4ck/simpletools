@@ -1,0 +1,136 @@
+﻿@using Sample.Model
+@using Sample.Web.Infrastructure
+@{
+    ViewBag.Title = "功能分类";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <p class="pull-right list-info"><b>@ViewBag.Total</b>条记录，共<b>@ViewBag.TotalPages</b>页</p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">添加</button>
+</div>
+<table class="table table-bordered table-striped" style="margin-top:15px;">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>分类</th>
+            <th>排序</th>
+            <th>时间</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null) {
+            foreach (FunsCate item in Model) {
+                <tr>
+                    <td style="width:10%;">@item.ID</td>
+                    <td style="width:55%;">@item.Name</td>
+                    <td style="width:10%;">@item.GroupIndex</td>
+                    <td style="width:20%;">@string.Format("{0:yyyy-MM-dd HH:mm:ss}", item.Intime)</td>
+                    <td style="width:5%;">
+                        <a data-id="@item.ID" href="javascript:void(0)" class="delete">删除</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div class="row page-center">
+    @if (ViewBag.TotalPages > 1) {
+        <div class="pagination">
+            <ul class="pl0">
+                @Html.Pager((int)(ViewBag.TotalPages), (int)(ViewBag.PageIndex), "list", new { area = "manage" })
+            </ul>
+        </div>
+    }
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">添加分类</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-nobordered">
+                    <tr>
+                        <td>名称：</td>
+                        <td>
+                            <input id="txtName" type="text" class="form-control"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>编码：</td>
+                        <td>
+                            <input id="txtCode" type="text" class="form-control" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>排序：</td>
+                        <td>
+                            <input id="txtGroupIndex" type="text" class="form-control" value="1" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button id="btnSubmit" type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $('#btnSubmit').click(function () {                
+                var name = $('#txtName').val();
+                var code = $('#txtCode').val();
+                var groupIndex = $('#txtGroupIndex').val();
+                if (name == '') {
+                    alert('名称不能为空！');
+                    return false;
+                }
+                if (groupIndex == '') {
+                    alert('排序不能为空！');
+                    return false;
+                }
+                $.ajax({
+                    type: 'POST',
+                    url:  '@Url.Action("add", "funscate", new { area="manage"})',
+                    data: { Name: name, Code: code, GroupIndex: groupIndex },
+                    success: function (slt) {
+                        if (slt && slt.Flag) {
+                            location.reload();
+                        }
+                        else {
+                            alert(slt.Message || '操作失败，请重试！');
+                        }
+                    }
+                });
+            });
+
+            $('.delete').click(function () {
+                if (confirm('确定要删除本条记录吗？')) {
+                    var id = $(this).attr('data-id');
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("delete", "funscate", new { area = "manage" })',
+                        data: { id: id },
+                        success: function (slt) {
+                            if (slt && slt.Flag) {
+                                location.reload();
+                            }
+                            else {
+                                alert(slt.Message || '操作失败，请重试！');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

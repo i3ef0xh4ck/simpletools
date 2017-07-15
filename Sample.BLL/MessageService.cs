@@ -34,6 +34,16 @@ namespace Sample.BLL
             return jm;
         }
 
+        public static JsonMessage Delete(int id) {
+            JsonMessage slt = new JsonMessage() { Flag = false };
+            if (string.IsNullOrEmpty(slt.Message)) {
+                string sql = "update message set status=0 where id=@id";
+                var result = Conn.Get().Execute(sql, new { id = id });
+                slt.Flag = result > 0;
+            }
+            return slt;
+        }
+
         public static int GetMessageCount() {
             string sql = "select count(1) from message where status=1;";
             return Conn.Get().ExecuteScalar<int>(sql);

@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>后台登录</title>
+    <script src="~/Content/themes/blueskin/js/jquery-2.0.3.min.js"></script>
+</head>
+<body>
+    <table class="table login-table">
+        <tr>
+            <td class="td-right">密码：</td>
+            <td>
+                <input id="txtCert" type="password" class="form-control w250" style="margin-bottom: 10px;" />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button class="btn btn-success btnEnter">进入</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<script>
+    $(function () {
+        $(".btnEnter").click(function () {
+            var name = $("#txtCert").val();
+            if (name.trim() == "") {
+                alert("凭证不能为空");
+                return false;
+            }
+
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("login", "account", new { area = "manage" })",
+                data: { "name": name },
+                success: function (slt) {
+                    if (slt && slt.Flag) {
+                        location.href = "@Url.Action("list", "funscate", new { area = "manage" })";
+                    }
+                    else {
+                        alert(slt.Message);
+                    }
+                }
+            });
+        });
+    })
+</script>

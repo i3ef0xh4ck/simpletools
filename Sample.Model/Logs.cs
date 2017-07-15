@@ -11,6 +11,6 @@ namespace Sample.Model
 
         public string Content { get; set; }
 
-        public DateTime Intime { get; set; }
+        public DateTime? Intime { get; set; }
     }
 }

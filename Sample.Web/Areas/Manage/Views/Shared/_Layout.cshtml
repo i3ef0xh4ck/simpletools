@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="程序员开发工具">
+    <link rel="icon" href="/images/monkey.ico">
+    <title>@ViewBag.Title-程序员开发工具</title>
+
+    <link href="~/Content/themes/blueskin/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assets/css/admin.css" rel="stylesheet">
+    <script src="~/Content/themes/blueskin/js/jquery-2.0.3.min.js"></script>
+    <script src="~/Content/themes/blueskin/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @RenderSection("Scripts", false)
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <span class="span-username">管理后台</span>
+                </a>
+            </div>
+            @*<ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">问答管理<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("list", "question", new { area="manage"})">问题列表</a></li>
+                        <li><a href="@Url.Action("list", "tag", new { area="manage"})">标签列表</a></li>
+                        <li><a href="@Url.Action("list", "user", new { area="manage"})">用户列表</a></li>
+                        <li><a href="@Url.Action("list", "seek", new { area="manage"})">采集列表</a></li>
+                    </ul>
+                </li>
+            </ul>*@
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/" target="_blank">网站首页</a></li>
+                <li><a href="javascript:void(0)" class="quit">退出</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li data-flag="funscate"><a href="@Url.Action("list","funscate", new { area="manage"})">功能分类</a></li>
+                    <li data-flag="funs"><a href="@Url.Action("list","funs", new { area="manage"})">功能管理</a></li>
+                    <li data-flag="message"><a href="@Url.Action("list","message", new { area="manage"})">留言管理</a></li>
+                    <li data-flag="help"><a href="@Url.Action("list","help", new { area="manage"})">赞助管理</a></li>
+                    <li data-flag="logs"><a href="@Url.Action("list", "logs", new { area="manage"})">日志管理</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script>
+    $(function () {
+        $(".quit").click(function () {
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("quit", "account", new { area="manage"})",
+                success: function () {
+                    location.reload();
+                }
+            });
+        });
+    });
+
+    (function () {
+        //当前页导航高亮显示
+        var isIndex = true;
+        var href = location.href.toLowerCase();
+        var $lis = $(".nav-sidebar").children("li");
+        $.each($lis, function () {
+            var nav = $(this).attr("data-flag");
+            if (href.indexOf(nav) > 0) {
+                $(this).addClass("active");
+                isIndex = false;
+                return false;
+            }
+        });
+
+        if (isIndex)
+            $(".nav-sidebar li").eq(0).addClass("active");
+    }());
+</script>
+

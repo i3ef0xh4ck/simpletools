@@ -1,0 +1,157 @@
+﻿@using Sample.Model
+@using Sample.Web.Infrastructure
+@{
+    ViewBag.Title = "赞助管理";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <p class="pull-right list-info"><b>@ViewBag.Total</b>条记录，共<b>@ViewBag.TotalPages</b>页</p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">添加</button>
+</div>
+<table class="table table-bordered table-striped" style="margin-top:15px;">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>时间</th>
+            <th>来源</th>
+            <th>赞助人</th>
+            <th>金额</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null) {
+            foreach (Help item in Model) {
+                <tr>
+                    <td style="width:10%;">@item.ID</td>
+                    <td style="width:30%;">@string.Format("{0:yyyy-MM-dd}", item.Intime)</td>
+                    <td style="width:10%;">@item.Source</td>
+                    <td style="width:30%;">@item.Name</td>
+                    <td style="width:10%;">@string.Format("{0:0.00}", item.Money)</td>
+                    <td style="width:10%;">
+                        <a data-id="@item.ID" href="javascript:void(0)" class="delete">删除</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div class="row page-center">
+    @if (ViewBag.TotalPages > 1) {
+        <div class="pagination">
+            <ul class="pl0">
+                @Html.Pager((int)(ViewBag.TotalPages), (int)(ViewBag.PageIndex), "list", new { area = "manage" })
+            </ul>
+        </div>
+    }
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">添加赞助</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-nobordered">
+                    <tr>
+                        <td style="width:80px;">时间：</td>
+                        <td>
+                            <input id="txtIntime" value="@string.Format("{0:yyyy-MM-dd}",DateTime.Now)" type="text" class="form-control" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd' })"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>来源：</td>
+                        <td>
+                            <select id="selSource" class="form-control">
+                                <option>微信</option>
+                                <option>支付宝</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>赞助人：</td>
+                        <td>
+                            <input id="txtName" type="text" class="form-control" value="未知" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>金额：</td>
+                        <td>
+                            <input id="txtMoney" type="text" class="form-control" value="0" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button id="btnSubmit" type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="/assets/plugins/DatePicker/WdatePicker.js"></script>
+    <script>
+        $(function () {
+            $('#btnSubmit').click(function () {
+                var intime = $('#txtIntime').val();
+                var source = $('#selSource').find('option:selected').text();
+                var name = $('#txtName').val();
+                var money = $('#txtMoney').val();
+                if (intime == '') {
+                    alert('时间不能为空！');
+                    return false;
+                }
+                if (source == '') {
+                    alert('来源不能为空！');
+                    return false;
+                }
+                if (name == '') {
+                    alert('赞助人不能为空！');
+                    return false;
+                }
+                if (money == '') {
+                    alert('金额不能为空！');
+                    return false;
+                }
+                $.ajax({
+                    type: 'POST',
+                    url:  '@Url.Action("add", "help", new { area="manage"})',
+                    data: {Intime:intime,Source:source,Name:name,Money:money},
+                    success: function (slt) {
+                        if (slt && slt.Flag) {
+                            location.reload();
+                        }
+                        else {
+                            alert(slt.Message || '操作失败，请重试！');
+                        }
+                    }
+                });
+            });
+
+            $('.delete').click(function () {
+                if (confirm('确定要删除本条记录吗？')) {
+                    var id = $(this).attr('data-id');
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("delete", "help", new { area="manage"})',
+                        data: { id: id },
+                        success: function (slt) {
+                            if (slt && slt.Flag) {
+                                location.reload();
+                            }
+                            else {
+                                alert(slt.Message || '操作失败，请重试！');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

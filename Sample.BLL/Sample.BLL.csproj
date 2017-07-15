@@ -64,6 +64,8 @@
     <Compile Include="AESService.cs" />
     <Compile Include="ASCIIService.cs" />
     <Compile Include="BaseService.cs" />
+    <Compile Include="FunsCateService.cs" />
+    <Compile Include="FunsService.cs" />
     <Compile Include="HelpService.cs" />
     <Compile Include="HttpRequestService.cs" />
     <Compile Include="HttpService.cs" />

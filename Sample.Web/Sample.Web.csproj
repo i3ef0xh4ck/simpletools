@@ -112,6 +112,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Manage\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Manage\Controllers\FunsCateController.cs" />
+    <Compile Include="Areas\Manage\Controllers\FunsController.cs" />
+    <Compile Include="Areas\Manage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\Manage\Controllers\LogsController.cs" />
+    <Compile Include="Areas\Manage\Controllers\MessageController.cs" />
+    <Compile Include="Areas\Manage\ManageAreaRegistration.cs" />
     <Compile Include="Controllers\BabyController.cs" />
     <Compile Include="Controllers\BarcodeController.cs" />
     <Compile Include="Controllers\DocsController.cs" />
@@ -132,6 +139,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AdminValidationAttribute.cs" />
     <Compile Include="Infrastructure\ApiRateLimitAttribute.cs" />
     <Compile Include="Infrastructure\AppCaches.cs" />
     <Compile Include="Infrastructure\AppUtils.cs" />
@@ -143,6 +151,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Assets\css\admin.css" />
     <Content Include="Assets\css\bootstrap.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\dashboard.css" />
@@ -400,7 +409,9 @@
     </Content>
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Manage\Models\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -415,6 +426,10 @@
     <ProjectReference Include="..\Sample.Model\Sample.Model.csproj">
       <Project>{f2554860-b9fe-4106-ad71-e265e395455a}</Project>
       <Name>Sample.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Simple\Simple.csproj">
+      <Project>{b39c387e-3ab6-4d59-a3d4-0c9004b31ad3}</Project>
+      <Name>Simple</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -448,6 +463,14 @@
     <Content Include="Assets\plugins\showdown\package.json" />
     <Content Include="Assets\plugins\showdown\README.md" />
     <Content Include="Assets\js\transfer\unix.js" />
+    <Content Include="Areas\Manage\Views\Web.config" />
+    <Content Include="Areas\Manage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Manage\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Manage\Views\Help\List.cshtml" />
+    <Content Include="Areas\Manage\Views\Logs\List.cshtml" />
+    <Content Include="Areas\Manage\Views\Message\List.cshtml" />
+    <Content Include="Areas\Manage\Views\FunsCate\List.cshtml" />
+    <Content Include="Areas\Manage\Views\Funs\List.cshtml" />
     <None Include="Properties\PublishProfiles\ofmonkey.pubxml" />
     <Content Include="Views\M\Help.cshtml" />
     <Content Include="Views\M\About.cshtml" />
