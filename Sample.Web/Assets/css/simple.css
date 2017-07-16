@@ -444,3 +444,6 @@ textarea {
 .high-light{
     color:orange !important;
 }
+.navbar-form{
+    margin-top:6px !important;
+}

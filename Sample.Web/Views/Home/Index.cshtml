@@ -17,17 +17,19 @@
         </div>
     </div>*@
 <div>
-    @if (ViewBag.FunsCates != null) {
+    @if (ViewBag.FunsCates != null) {       
         <ul class="funs-container">
             @foreach (FunsCate item in ViewBag.FunsCates) {
-                foreach (var fun in item.Funs) {
-                    <li>
-                        <a href="@fun.Url" class="funs-title">@fun.Name</a>
-                        <p class="funs-desc">
-                            <span class="funs-count">使用次数：@fun.VisitCount</span>
-                            <a href="@fun.Url" class="btn btn-default btn-xs funs-button">使用</a>
-                        </p>
-                    </li>
+                if (item.Funs != null && item.Funs.Any()) {
+                    foreach (var fun in item.Funs) {
+                        <li>
+                            <a href="@fun.Url" class="funs-title">@fun.Name</a>
+                            <p class="funs-desc">
+                                <span class="funs-count">使用次数：@fun.VisitCount</span>
+                                <a href="@fun.Url" class="btn btn-default btn-xs funs-button">使用</a>
+                            </p>
+                        </li>
+                    }
                 }
             }
         </ul>

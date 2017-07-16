@@ -7,7 +7,7 @@ namespace Sample.Web.Infrastructure
 {
     public class AppUtils
     {
-        public static string Version = "2017071602";
+        public static string Version = "2017071604";
 
         #region 获取客户端IP
         /// <summary>

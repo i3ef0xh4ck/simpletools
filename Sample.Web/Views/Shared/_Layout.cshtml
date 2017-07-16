@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>@ViewBag.Title - 程序员在线工具</title> 
+    <title>@ViewBag.Title - 程序员在线工具</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,11 +41,11 @@
     </script>
 
     <script>
-        (function(){
+        (function () {
             var bp = document.createElement('script');
             var curProtocol = window.location.protocol.split(':')[0];
             if (curProtocol === 'https') {
-                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
             }
             else {
                 bp.src = 'http://push.zhanzhang.baidu.com/push.js';
@@ -69,17 +69,25 @@
                 <div class="sidebar-collapse" id="sidebar-collapse">
                     <i class="collapse-icon glyphicon glyphicon-list" title="隐藏菜单"></i>
                 </div>
+                <div class="navbar-header pull-left" style="margin-left:47px;">
+                    <form id="simpleForm" class="navbar-form" action="/" method="post">
+                        <div class="input-group">
+                            <input type="text" name="name" class="form-control" placeholder="输入工具关键字，如 json" style="width:200px;" value="@ViewBag.KeyWord">
+                            <span class="input-group-addon" style="cursor:pointer;" onclick="javascript:  $('#simpleForm').submit()">搜索</span>
+                        </div>
+                    </form>
+                </div>   
                 <div class="navbar-header pull-right">
                     <div class="navbar-account">
                         <ul class="account-top">
-                            <li><a href="/m/friends">友情链接</a></li>                            
+                            <li><a href="/m/friends">友情链接</a></li>
                             <li><a href="/m/help">赞助名单</a></li>
-                            <li><a href="/m/talk">意见反馈</a></li>  
+                            <li><a href="/m/talk">意见反馈</a></li>
                             <li><a href="/m/logs">开发日志</a></li>
-                            <li><a href="/m/about">关于本站</a></li>                    
+                            <li><a href="/m/about">关于本站</a></li>
                         </ul>
                     </div>
-                </div>
+                </div>                            
             </div>
         </div>
     </div>
@@ -91,7 +99,7 @@
                     <li>
                         <a href="/">
                             <i class="menu-icon glyphicon glyphicon-home"></i>
-                            <span class="menu-text"> 功能导航 </span>
+                            <span class="menu-text"> 所有功能 </span>
                         </a>
                     </li>
                     <li data-flag="query">
@@ -175,13 +183,13 @@
             <div class="page-content" style="padding:20px 25px;background:#fff;">
                 @RenderBody()
                 @*<div>
-                    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
-                    <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
-                </div>*@
+                        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                        <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+                    </div>*@
             </div>
         </div>
-    </div>   
-             
+    </div>
+
     <div class="side-nav">
         <a href="@Url.Action("talk","m")">留言</a>
         <a class="btnHelp" href="javscript:void(0)">赞助</a>
@@ -214,7 +222,7 @@
 
     <script src="~/Content/themes/blueskin/js/beyond.min.js"></script>
 
-    @Html.Hidden("hiddenToken", new Guid().ToString() + DateTime.Now.Ticks)    
+    @Html.Hidden("hiddenToken", new Guid().ToString() + DateTime.Now.Ticks)
     <script>
         $(function () {
             $(window).scroll(function () {
@@ -226,7 +234,7 @@
             });
             $('#backTop').click(function () { $('html,body').animate({ scrollTop: '0px' }, 500); });
 
-            $(document).on("click",".btnHelp",function () {
+            $(document).on("click", ".btnHelp", function () {
                 $("#myModal").modal("show");
             });
         });
