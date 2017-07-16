@@ -27,11 +27,13 @@ namespace Sample.Web.Areas.Manage.Controllers
 
         [HttpPost]
         public JsonResult Add(Funs model) {
+            FunsContainer.GlobalFuns = null;
             return Json(FunsService.Add(model));
         }
 
         [HttpPost]
         public JsonResult Delete(int id) {
+            FunsContainer.GlobalFuns = null;
             return Json(FunsService.Delete(id));
         }
     }

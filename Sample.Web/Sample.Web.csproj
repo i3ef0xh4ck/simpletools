@@ -140,9 +140,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AdminValidationAttribute.cs" />
+    <Compile Include="Infrastructure\AnalysisAttribute.cs" />
     <Compile Include="Infrastructure\ApiRateLimitAttribute.cs" />
     <Compile Include="Infrastructure\AppCaches.cs" />
+    <Compile Include="Infrastructure\AppConfig.cs" />
     <Compile Include="Infrastructure\AppUtils.cs" />
+    <Compile Include="Infrastructure\FunsContainer.cs" />
     <Compile Include="Infrastructure\HtmlHelperExtend.cs" />
     <Compile Include="Infrastructure\MonkeyController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

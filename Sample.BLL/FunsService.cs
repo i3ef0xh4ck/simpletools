@@ -23,13 +23,19 @@ namespace Sample.BLL
             return SearchByPage<Funs>(item);
         }
 
+        public static List<Funs> GetList() {
+            string sql = @"select * from funs order by GroupIndex asc";
+            var result = Conn.Get().Query<Funs>(sql);
+            return result != null ? result.ToList() : null;
+        }
+
         public static List<Funs> GetListByCateID(int cateID) {
             string sql = @"select f.ID,f.CateID,c.Name as CateName,f.Name,f.Url,f.Icon,f.VisitCount,f.GroupIndex,f.Intime 
                            from funs f left join funscate c on f.CateID = c.ID order by f.GroupIndex asc";
             var result = Conn.Get().Query<Funs>(sql, new { cateID = cateID });
             return result != null ? result.ToList() : null;
         }
-
+        
         public static JsonMessage Add(Funs model) {
             JsonMessage slt = new JsonMessage() { Flag = false };
             slt.Message = Validate(model);
@@ -53,6 +59,16 @@ namespace Sample.BLL
             JsonMessage slt = new JsonMessage() { Flag = false };
             if (string.IsNullOrEmpty(slt.Message)) {
                 string sql = "delete from Funs where id=@id";
+                var result = Conn.Get().Execute(sql, new { id = id });
+                slt.Flag = result > 0;
+            }
+            return slt;
+        }
+
+        public static JsonMessage VisitPlus(int id) {
+            JsonMessage slt = new JsonMessage() { Flag = false };
+            if (string.IsNullOrEmpty(slt.Message)) {
+                string sql = "update Funs set VisitCount = isnull(VisitCount,0) + 1 where id=@id";
                 var result = Conn.Get().Execute(sql, new { id = id });
                 slt.Flag = result > 0;
             }

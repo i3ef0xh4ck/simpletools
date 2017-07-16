@@ -11,6 +11,7 @@ namespace Sample.Web.Controllers
     public class QueryController : Controller
     {
         public ActionResult Local() {
+            var temp = Request.Url.AbsolutePath;
             ViewBag.HttpModel = HttpService.GetHostInfo();
             return View();
         }

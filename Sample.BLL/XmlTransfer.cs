@@ -221,7 +221,7 @@ namespace Sample.BLL
                 stringBuilder.Append("\tpublic " + propertyType + " get" + FirstLetterUp(propertyName) + "(){\r\n");
                 stringBuilder.Append("\t\treturn this." + propertyName + ";\r\n");
                 stringBuilder.Append("\t}\r\n");
-                stringBuilder.Append("\tpublic " + propertyType + " set" + FirstLetterUp(propertyName) + "(){\r\n");
+                stringBuilder.Append("\tpublic " + propertyType + " set" + FirstLetterUp(propertyName) + "("+propertyType+" "+propertyName+"){\r\n");
                 stringBuilder.Append("\t\tthis." + propertyName + "=" + propertyName + ";\r\n");
                 stringBuilder.Append("\t}\r\n");
             }

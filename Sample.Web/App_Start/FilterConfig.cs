@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Sample.Web.Infrastructure;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Sample.Web
@@ -8,6 +9,7 @@ namespace Sample.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new AnalysisAttribute());
         }
     }
 }
