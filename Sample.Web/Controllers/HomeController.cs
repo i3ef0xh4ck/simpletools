@@ -13,6 +13,7 @@ namespace Sample.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            ViewBag.FunsCates = FunsCateService.GetList(true);
             return View();
         }
     }

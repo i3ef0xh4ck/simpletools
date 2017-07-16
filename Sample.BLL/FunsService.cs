@@ -31,7 +31,7 @@ namespace Sample.BLL
 
         public static List<Funs> GetListByCateID(int cateID) {
             string sql = @"select f.ID,f.CateID,c.Name as CateName,f.Name,f.Url,f.Icon,f.VisitCount,f.GroupIndex,f.Intime 
-                           from funs f left join funscate c on f.CateID = c.ID order by f.GroupIndex asc";
+                           from funs f left join funscate c on f.CateID = c.ID where f.CateID=@cateID order by f.GroupIndex asc";
             var result = Conn.Get().Query<Funs>(sql, new { cateID = cateID });
             return result != null ? result.ToList() : null;
         }

@@ -401,3 +401,46 @@ textarea {
     margin-bottom:15px;
     margin-right:10px;
 }
+.funs-container{
+    margin:0;
+    padding:0;
+}
+.funs-container li{
+    float:left;
+    width:220px;
+    /*height:50px;*/
+    border:1px solid #ccc;
+    margin-right:10px;
+    margin-bottom:10px;
+    list-style:none;
+    padding:5px 8px;
+}
+.funs-title{
+    font-size:16px;
+    font-family:"微软雅黑";
+    margin:5px 0px 15px 0px;
+    color:#333;
+    font-weight:normal;
+    display:block;
+}
+.funs-desc{
+    margin:0px;
+}
+.funs-count{
+    color:#999;
+    position:relative;
+    top:3px;
+}
+.funs-button{
+    float:right;
+}
+.fun-cate{
+    color:#999;
+    float:right;
+}
+.funs-hover{
+    border:1px solid orange !important;
+}
+.high-light{
+    color:orange !important;
+}
