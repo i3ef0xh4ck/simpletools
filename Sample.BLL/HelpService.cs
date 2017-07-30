@@ -61,5 +61,9 @@ namespace Sample.BLL
             }
             return slt;
         }
+
+        public static decimal Sum() {
+            return Conn.Get().ExecuteScalar<decimal>("select sum(money) from Help");
+        }
     }
 }

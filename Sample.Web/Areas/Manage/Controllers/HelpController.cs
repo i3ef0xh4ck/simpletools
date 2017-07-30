@@ -19,6 +19,7 @@ namespace Sample.Web.Areas.Manage.Controllers
             ViewBag.Total = list.TotalItem;
             ViewBag.PageIndex = page;
             ViewBag.TotalPages = Math.Ceiling(list.TotalItem * 1.0 / pageSize);
+            ViewBag.TotalMoney = HelpService.Sum();
             return View(list.Data);
         }
 

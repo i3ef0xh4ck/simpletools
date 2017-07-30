@@ -12,7 +12,6 @@ namespace Sample.Web.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
         public ActionResult Index()
         {
             string keyword = Request.Form["name"];
@@ -24,6 +23,10 @@ namespace Sample.Web.Controllers
             }
             ViewBag.FunsCates = cates;
             ViewBag.KeyWord = keyword;
+            return View();
+        }
+
+        public ActionResult Statistics() {
             return View();
         }
 

@@ -544,6 +544,7 @@
     <Content Include="Views\Query\Http.cshtml" />
     <Content Include="Views\Baby\Count.cshtml" />
     <Content Include="Views\M\Friends.cshtml" />
+    <Content Include="Views\Home\Statistics.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
