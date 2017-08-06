@@ -6,7 +6,8 @@
         }
         else {
             var re = /[\u4E00-\u9FA5]/g;
-            var len = text.match(re).length;
+            var match = text.match(re);
+            var len = match != null ? match.length : 0;
             $(".length-tip").show().text("字符长度：" + text.length + "，汉字数量：" + len);
         }
     });
