@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="IpLocator">
-      <HintPath>..\..\refdlls\IpLocator.dll</HintPath>
+      <HintPath>..\..\simple_tools_ftp\IpLocator.dll</HintPath>
     </Reference>
     <Reference Include="MpLocator">
-      <HintPath>..\..\refdlls\MpLocator.dll</HintPath>
+      <HintPath>..\..\simple_tools_ftp\MpLocator.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -51,7 +51,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http">
+      <HintPath>..\..\simple_tools_ftp\System.Net.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="zxing, Version=0.16.2.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
       <HintPath>..\packages\ZXing.Net.0.16.2\lib\net40\zxing.dll</HintPath>
