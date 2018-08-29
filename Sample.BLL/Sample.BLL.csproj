@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="IpLocator">
-      <HintPath>..\..\simple_tools_ftp\IpLocator.dll</HintPath>
+      <HintPath>..\dlls\IpLocator.dll</HintPath>
     </Reference>
     <Reference Include="MpLocator">
-      <HintPath>..\..\simple_tools_ftp\MpLocator.dll</HintPath>
+      <HintPath>..\dlls\MpLocator.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
