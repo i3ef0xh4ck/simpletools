@@ -37,10 +37,10 @@
         </tr>
     }    
 </table> 
-<div class="row page-center">
+<div class="row page-center" style="text-align:center;">
     @if (ViewBag.TotalPages > 1) {
-        <div class="pagination">
-            <ul class="pl0">
+        <div class="pagination" style="margin-top:30px;">
+            <ul class="pagination">
                 @Html.Pager((int)(ViewBag.TotalPages), (int)(ViewBag.PageIndex), "help", null)
             </ul>
         </div>
