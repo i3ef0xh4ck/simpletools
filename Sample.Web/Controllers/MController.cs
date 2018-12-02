@@ -80,5 +80,10 @@ namespace Sample.Web.Controllers
             return View();
         }
 
+        public ActionResult Ad()
+        {
+            return View();        
+        }
+
     }
 }
