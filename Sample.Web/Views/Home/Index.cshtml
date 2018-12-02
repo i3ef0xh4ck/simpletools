@@ -7,8 +7,312 @@
     ViewBag.Description = "px转rem、本机IP查询、Json格式化、UrlEncode、HtmlEncode、Md5加密、Base64、Guid、半角全角、时间戳、字符串长度、Json转实体、二维码生成、条形码生成、二进制、编码、解码、编程工具、在线工具";
 }
 
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="#home" data-toggle="tab"> json格式化</a></li>
+    <li><a href="#jsonmodel" data-toggle="tab">json生成实体</a></li>
+    <li><a href="#md5" data-toggle="tab">MD5加密</a></li>
+    <li><a href="#urldecode" data-toggle="tab">Url编码解码</a></li>
+    <li><a href="#unix" data-toggle="tab">Unix时间戳</a></li>
+    <li><a href="#binary" data-toggle="tab">进制换算</a></li>
+    <li><a href="#regex" data-toggle="tab">正则测试</a></li>
+    <li><a href="#url" data-toggle="tab">Url参数格式化</a></li>
+    <li><a href="#rem" data-toggle="tab">px转rem</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+        <textarea spellcheck="false" id="json_text" class="form-control" rows="25"> {"name":"王小二","age":15,"address":{"province":"浙江","city":"杭州","district":"西湖区"},"hobby":["足球","棒球","乒乓球"]}</textarea>
+        <p class="mt15">
+            <button class="btn btn-primary" onclick="$('#json_text').format({method: 'json'})">格式化</button>
+            <button class="btn btn-primary" onclick="$('#json_text').format({ method: 'jsonmin'})">压缩</button>
+        </p>        
+    </div>
+    <div class="tab-pane fade" id="md5">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea spellcheck="false" id="txtSourceMd5" class="form-control " rows="18">666666</textarea>
+                </td>
+                <td class="compare-second">
+                    <p>
+                        <input id="rad16" type="radio" name="radHalf" /><label class="lblNormal" for="rad16">16位</label>
+                    </p>
+                    <p>
+                        <input id="rad32" type="radio" name="radHalf" checked="checked" /><label class="lblNormal" for="rad32">32位</label>
+                    </p>
+                    <p><button id="btnMd5" class="btn btn-primary">MD5 &gt;</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea spellcheck="false" id="txtDestMd5" class="form-control" rows="18"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="urldecode">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea id="txtSourceUrl" class="form-control " rows="18" spellcheck="false">http://www.baidu.com?t=hello</textarea>
+                </td>
+                <td class="compare-second">
+                    <p><button id="btnUrlEncode" class="btn btn-primary">编码 &gt;</button></p>
+                    <p><button id="btnUrlDecode" class="btn btn-primary">&lt; 解码</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea id="txtDestUrl" class="form-control" rows="18" spellcheck="false"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="jsonmodel">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea spellcheck="false" id="txtSourceJsonEntity" class="form-control" rows="25">
+{
+    "ID": 1,
+    "Name": "jack",
+    "Address": {
+        "Province": "浙江",
+        "City": {
+        "Name": "杭州",
+        "Code": "310000"
+        }
+    },
+    "Hobby": [
+        {
+        "Category": "运动",
+        "Name": "篮球"
+        },
+        {
+        "Category": "音乐",
+        "Name": "小提琴"
+        }
+    ]
+}
+                    </textarea>
+                </td>
+                <td class="compare-second">
+                    <p>
+                        <select id="selJsonCate" class="form-control" style="width:50%;margin:0 auto;">
+                            <option>C#</option>
+                            <option>Java</option>
+                        </select>
+                    </p>
+                    <p><button id="btnJsonEntity" class="btn btn-primary">生成 &gt;</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea id="txtDestJsonEntity" spellcheck="false" class="form-control" rows="25"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="unix">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <table class="inner-table">
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">原日期</button>
+                                </span>
+                                <input id="txtSourceUnix" type="text" class="form-control" value="@string.Format("{0:yyyy-MM-dd HH:mm:ss}",DateTime.Now)" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })">
+                                <span class="input-group-btn">
+                                    <button id="btnTransUnix" data-val="10" class="btn btn-primary btnCal" type="button">转时间戳</button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">时间戳</button>
+                                </span>
+                                <input id="txtDestUnix" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button id="btnTransDate" data-val="2" class="btn btn-primary btnCal" type="button">转原日期</button>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="compare-second"></td>
+                <td class="compare-third"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="binary">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <table class="inner-table">
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">十进制</button>
+                                </span>
+                                <input id="txt10" type="text" class="form-control" value="1024">
+                                <span class="input-group-btn">
+                                    <button data-val="10" class="btn btn-primary btnCal" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">二进制</button>
+                                </span>
+                                <input id="txt2" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button data-val="2" class="btn btn-primary btnCal" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">八进制</button>
+                                </span>
+                                <input id="txt8" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button data-val="8" class="btn btn-primary btnCal" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">十六进制</button>
+                                </span>
+                                <input id="txt16" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button data-val="16" class="btn btn-primary btnCal" type="button">计算</button>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="compare-second"></td>
+                <td class="compare-third"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="regex">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <table class="inner-table">
+                        <tr>
+                            <td>
+                                <textarea id="txtRegexPattern" spellcheck="false" class="form-control" rows="2" placeholder="请填写正则">\w+?(\d+)\w+?([\u4e00-\u9fa5]+)</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea id="txtRegexContent" spellcheck="false" class="form-control" rows="15" placeholder="请填写内容">hello123world世界</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="chkIgnoreCase" type="checkbox" checked="checked">
+                                <label for="chkIgnoreCase" class="lblNormal">忽略大小写</label>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="compare-second">
+                    <p><button id="btnRegexMatch" class="btn btn-primary">执行 &gt;</button></p>
+                </td>
+                <td class="compare-third" valign="top">
+                    <table class="inner-table">
+                        <tr>
+                            <td><textarea id="txtRegexTip" spellcheck="false" class="form-control" rows="2" disabled="disabled"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea spellcheck="false" id="txtRegexResult" class="form-control" rows="15" placeholder="匹配结果"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="url">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea spellcheck="false" id="txtSourceUrl2" class="form-control " rows="18">http://www.ofmonkey.com?name=tom&age=20&sex=male</textarea>
+                </td>
+                <td class="compare-second">
+                    <p><button id="btnFormatUrl" class="btn btn-primary">格式化 &gt;</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea spellcheck="false" id="txtDestUrl2" class="form-control" rows="18"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="rem">
+        <table class="compare-table">
+            <tr>
+                <td class="compare-first">
+                    <textarea spellcheck="false" id="txtSourceRem" class="form-control" rows="21">
+.item{
+   width: 200px;
+   height: 150px;
+   border: 1px solid #ccc;
+   margin: 10px auto;
+   padding: 5px;
+}
+                    </textarea>
+                </td>
+                <td class="compare-second" style="text-align:center;">
+                    <p style="width:90%;margin:5px auto;">
+                        <span>1rem=</span>
+                        <input id="txtRemIntalize" type="text" class="form-control" style="width:45px;display:inline-block;" value="16" />
+                        <span>px</span>
+                    </p>
+                    <p><button id="btnToRem" class="btn btn-primary">转换 &gt;</button></p>
+                </td>
+                <td class="compare-third">
+                    <textarea id="txtDestRem" spellcheck="false" class="form-control" rows="21"></textarea>
+                </td>
+            </tr>
+        </table>
+        <p style="margin-top:10px;">
+            <input id="chkIgnoreBorder" type="checkbox" checked="checked">
+            <label for="chkIgnoreBorder" class="lblNormal">不处理border</label>
+        </p>
+    </div>
+</div>
 
-<div>
+@Html.Partial("_ErrorTip")
+
+@section Script{
+    <script src="/Assets/js/format/jquery-extend.js"></script>
+    <script src="/Assets/js/format/base.js"></script>
+    <script src="/Assets/js/format/jsformat.js"></script>
+    <script src="/Assets/js/format/htmlformat.js"></script>
+    <script src="/assets/js/encrypt/md5.js"></script>
+    <script src="/assets/js/encode/urlencode.js"></script>
+    <script src="/assets/js/entity/common.js"></script>
+    <script src="/assets/js/entity/json.js"></script>
+    <script src="/assets/plugins/DatePicker/WdatePicker.js"></script>
+    <script src="/assets/js/transfer/unix.js"></script>
+    <script src="/assets/js/unit/binary.js"></script>
+    <script src="/Assets/js/regex/test.js"></script>
+    <script src="/assets/js/transfer/url.js"></script>
+    <script src="/Assets/js/format/jquery-extend.js"></script>
+    <script src="/Assets/js/format/base.js"></script>
+    <script src="/Assets/js/format/jsformat.js"></script>
+    <script src="/Assets/js/format/htmlformat.js"></script>
+    <script src="/assets/js/front/rem.js"></script>
+}
+
+@*<div>
     @if (ViewBag.FunsCates != null) {       
         <ul class="funs-container">
             @foreach (FunsCate item in ViewBag.FunsCates) {
@@ -42,7 +346,7 @@
             });
         });
     </script>
-}
+}*@
 
 
 

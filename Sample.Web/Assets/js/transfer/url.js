@@ -1,6 +1,6 @@
 ﻿$(function () {
     $("#btnFormatUrl").click(function () {
-        var text = $("#txtSourceUrl").val();
+        var text = $("#txtSourceUrl2").val();
         if (text == "") {
             error("请填写要格式化的URL");
         }
@@ -13,7 +13,7 @@
             }
             json += ' }';
             json = json.replace(',  }', ' }');
-            $("#txtDestUrl").val(json);
+            $("#txtDestUrl2").val(json);
         }
     });
 });

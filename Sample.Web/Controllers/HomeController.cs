@@ -14,15 +14,15 @@ namespace Sample.Web.Controllers
     {
         public ActionResult Index()
         {
-            string keyword = Request.Form["name"];
-            var cates = FunsCateService.GetList(true);
-            if (!string.IsNullOrEmpty(keyword)) {
-                foreach (var item in cates) {
-                    item.Funs = Filter(source: item.Funs, keyword: keyword);
-                }
-            }
-            ViewBag.FunsCates = cates;
-            ViewBag.KeyWord = keyword;
+            //string keyword = Request.Form["name"];
+            //var cates = FunsCateService.GetList(true);
+            //if (!string.IsNullOrEmpty(keyword)) {
+            //    foreach (var item in cates) {
+            //        item.Funs = Filter(source: item.Funs, keyword: keyword);
+            //    }
+            //}
+            //ViewBag.FunsCates = cates;
+            //ViewBag.KeyWord = keyword;
             return View();
         }
 
